@@ -2,73 +2,62 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>YV Orbit — Research Evidence Library</title>
-<meta name="description" content="YV Orbit research evidence library: selected backtest and strategy research screenshots.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F4F0E9">
+<title>Report library | YV Orbit</title>
+<meta name="description" content="Every backtest, forward test and development update published by YV Orbit, with the original Strategy Tester and account report images.">
+<link rel="canonical" href="https://www.yvorbit.com/evidence.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23F4F0E9'/%3E%3Ctext x='8' y='46' font-family='Arial Black,Arial' font-weight='900' font-size='36' fill='%233E6B52'%3EY%3C/text%3E%3Ctext x='31' y='46' font-family='Arial Black,Arial' font-weight='900' font-size='36' fill='%235A1E2B'%3EV%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#f7f4ec;--panel:#fffdf8;--line:#d9ded5;--text:#333b36;--muted:#737b73;--green:#687f6a;--burgundy:#743b49;--max:1180px}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;line-height:1.6}
-a{color:inherit;text-decoration:none}
-.wrap{width:min(calc(100% - 48px),var(--max));margin:auto}
-.brand{font:600 18px Orbitron;letter-spacing:.12em}
-.brand .y{color:var(--green)}
-.brand .v{color:var(--burgundy)}
-header{position:sticky;top:0;z-index:10;background:rgba(247,244,236,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-nav{min-height:72px;display:flex;align-items:center;justify-content:space-between}
-.nav{display:flex;gap:22px;color:var(--muted);font:11px "IBM Plex Mono"}
-.nav a:hover{color:var(--burgundy)}
-.navbtn{border:1px solid var(--green);color:var(--green);padding:9px 13px;font:11px "IBM Plex Mono"}
-.hero{padding:82px 0 55px;border-bottom:1px solid var(--line)}
-.kicker{color:var(--green);font:11px "IBM Plex Mono";letter-spacing:.14em;margin-bottom:18px}
-h1{font:600 clamp(38px,6vw,68px) Orbitron;line-height:1.02;letter-spacing:-.045em}
-h1 em{color:var(--burgundy);font-style:normal}
-.lead{max-width:720px;color:var(--muted);font-size:16px;margin:22px 0}
-.note{margin-top:20px;border-left:2px solid var(--green);background:rgba(104,127,106,.08);padding:16px;color:var(--muted);font-size:13px}
-.evidence-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:38px 0 70px}
-.evidence-item{background:var(--panel);border:1px solid var(--line);padding:10px;transition:transform .18s ease,border-color .18s ease}
-.evidence-item:hover{transform:translateY(-3px);border-color:var(--green)}
-.evidence-item img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:#ece8df}
-.evidence-item p{padding:10px 4px 2px;color:var(--muted);font:11px "IBM Plex Mono"}
-.footer{padding:34px 0;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
-.footer strong{font:600 15px Orbitron;color:var(--green)}
-@media(max-width:850px){.nav{display:none}.evidence-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.wrap{width:min(calc(100% - 32px),var(--max))}.evidence-grid{grid-template-columns:1fr}.footer{flex-direction:column}}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<header><div class="wrap"><nav>
-<a class="brand" href="index.html" aria-label="YV Orbit home"><span class="y">Y</span><span class="v">V</span></a>
-<div class="nav"><a href="index.html">HOME</a><a href="index.html#profile">PROFILE</a><a href="index.html#focus">CAPABILITY</a><a href="evidence.html">EVIDENCE</a><a href="index.html#method">RESEARCH</a><a href="index.html#principles">VALIDATION</a><a href="index.html#projects">BROKER</a></div>
-<a class="navbtn" href="index.html#contact">TECHNICAL DISCUSSION</a>
-</nav></div></header>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="wordmark" href="index.html" aria-label="YV Orbit home"><span class="y">Y</span><span class="v">V</span> <span class="o">ORBIT</span></a>
+    <nav class="navlinks" aria-label="Main">
+      <a href="index.html#results">Results</a>
+      <a href="index.html#ea">Free EA</a>
+      <a href="index.html#tools">Tools</a>
+      <a href="index.html#method">Method</a>
+      <a class="nav-cta" href="index.html#connect">Connect</a>
+    </nav>
+  </div>
+</header>
+
 <main>
-<section class="hero"><div class="wrap">
-<div class="kicker">YV ORBIT · EVIDENCE LIBRARY</div>
-<h1>Research evidence.<br><em>Open the details.</em></h1>
-<p class="lead">Selected backtest and strategy-research screenshots from the YV Orbit development archive. Click any image to open the full-resolution evidence in a separate browser tab.</p>
-<div class="note">These materials document testing and development activity. They are not a promise of future performance.</div>
-</div></section>
-<div class="wrap"><div class="evidence-grid">
-<a class="evidence-item" href="assets/evidence/evidence-01.jpg" target="_blank" rel="noopener"><img src="assets/evidence/evidence-01.jpg" alt="YV Orbit research evidence 01"><p>EVIDENCE 01 · OPEN FULL IMAGE ↗</p></a>
-<a class="evidence-item" href="assets/evidence/evidence-02.jpg" target="_blank" rel="noopener"><img src="assets/evidence/evidence-02.jpg" alt="YV Orbit research evidence 02"><p>EVIDENCE 02 · OPEN FULL IMAGE ↗</p></a>
-<a class="evidence-item" href="assets/evidence/evidence-03.jpg" target="_blank" rel="noopener"><img src="assets/evidence/evidence-03.jpg" alt="YV Orbit research evidence 03"><p>EVIDENCE 03 · OPEN FULL IMAGE ↗</p></a>
-<a class="evidence-item" href="assets/evidence/evidence-04.jpg" target="_blank" rel="noopener"><img src="assets/evidence/evidence-04.jpg" alt="YV Orbit research evidence 04"><p>EVIDENCE 04 · OPEN FULL IMAGE ↗</p></a>
-<a class="evidence-item" href="assets/evidence/evidence-05.jpg" target="_blank" rel="noopener"><img src="assets/evidence/evidence-05.jpg" alt="YV Orbit research evidence 05"><p>EVIDENCE 05 · OPEN FULL IMAGE ↗</p></a>
-<a class="evidence-item" href="assets/evidence/evidence-06.jpg" target="_blank" rel="noopener"><img src="assets/evidence/evidence-06.jpg" alt="YV Orbit research evidence 06"><p>EVIDENCE 06 · OPEN FULL IMAGE ↗</p></a>
-<a class="evidence-item" href="assets/evidence/evidence-07.jpg" target="_blank" rel="noopener"><img src="assets/evidence/evidence-07.jpg" alt="YV Orbit research evidence 07"><p>EVIDENCE 07 · OPEN FULL IMAGE ↗</p></a>
-<a class="evidence-item" href="assets/evidence/evidence-08.jpg" target="_blank" rel="noopener"><img src="assets/evidence/evidence-08.jpg" alt="YV Orbit research evidence 08"><p>EVIDENCE 08 · OPEN FULL IMAGE ↗</p></a>
-<a class="evidence-item" href="assets/evidence/evidence-09.jpg" target="_blank" rel="noopener"><img src="assets/evidence/evidence-09.jpg" alt="YV Orbit research evidence 09"><p>EVIDENCE 09 · OPEN FULL IMAGE ↗</p></a>
-<a class="evidence-item" href="assets/evidence/evidence-10.jpg" target="_blank" rel="noopener"><img src="assets/evidence/evidence-10.jpg" alt="YV Orbit research evidence 10"><p>EVIDENCE 10 · OPEN FULL IMAGE ↗</p></a>
-<a class="evidence-item" href="assets/evidence/evidence-11.jpg" target="_blank" rel="noopener"><img src="assets/evidence/evidence-11.jpg" alt="YV Orbit research evidence 11"><p>EVIDENCE 11 · OPEN FULL IMAGE ↗</p></a>
-<a class="evidence-item" href="assets/evidence/evidence-12.jpg" target="_blank" rel="noopener"><img src="assets/evidence/evidence-12.jpg" alt="YV Orbit research evidence 12"><p>EVIDENCE 12 · OPEN FULL IMAGE ↗</p></a>
-<a class="evidence-item" href="assets/evidence/evidence-13.jpg" target="_blank" rel="noopener"><img src="assets/evidence/evidence-13.jpg" alt="YV Orbit research evidence 13"><p>EVIDENCE 13 · OPEN FULL IMAGE ↗</p></a>
-<a class="evidence-item" href="assets/evidence/evidence-14.jpg" target="_blank" rel="noopener"><img src="assets/evidence/evidence-14.jpg" alt="YV Orbit research evidence 14"><p>EVIDENCE 14 · OPEN FULL IMAGE ↗</p></a>
-<a class="evidence-item" href="assets/evidence/evidence-15.jpg" target="_blank" rel="noopener"><img src="assets/evidence/evidence-15.jpg" alt="YV Orbit research evidence 15"><p>EVIDENCE 15 · OPEN FULL IMAGE ↗</p></a>
-</div></div></main>
-<footer><div class="wrap footer"><div><strong>YV ORBIT</strong><br>Algorithmic Trading · EA Development · Strategy Research</div><div>© 2026 YV Orbit · Evidence-led technical development.</div></div></footer>
-</body></html>
+  <section class="hero" style="padding-bottom:48px">
+    <div class="wrap">
+      <h1 style="font-size:clamp(34px,5vw,60px);max-width:16ch">Report library</h1>
+      <p class="lede">The original images behind the test record: <span data-n-images>15</span> reports covering <span data-n-tests>18</span> tests, <span data-n-win>8</span> above breakeven and <span data-n-loss>10</span> below. Select a report to see its numbers and open the full-size image.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="gallery" data-gallery></div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-row">
+      <a class="wordmark" href="index.html"><span class="y">Y</span><span class="v">V</span> <span class="o">ORBIT</span></a>
+      <span>© <span data-year>2026</span> YV Orbit. yvorbit.com</span>
+    </div>
+    <p class="risk">Trading leveraged products such as forex, CFDs, metals and crypto carries a high risk of losing money. These reports describe past behaviour under specific settings and are shared for research and education. They are not investment advice and do not guarantee future results.</p>
+  </div>
+</footer>
+
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="Test report">
+  <button class="close" type="button" aria-label="Close report">&times;</button>
+  <figure><img alt=""><figcaption></figcaption></figure>
+</div>
+
+<script src="assets/config.js"></script>
+<script src="assets/records.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
