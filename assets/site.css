@@ -136,6 +136,9 @@ h2.display{font-size:clamp(28px,3.6vw,42px)}
 .tool h3{font:600 22px/1.25 var(--display);margin:6px 0 12px}
 .tool .platform{font-size:13px;color:var(--muted)}
 .tool p{margin:0 0 22px;color:var(--muted)}
+.tool-shot{display:block;margin:0 0 24px;border:1px solid var(--stone);border-radius:4px;overflow:hidden;background:var(--paper-2)}
+.tool-shot img{width:100%;height:auto}
+.tool-shot:hover{border-color:var(--green)}
 .tool ul{margin:0 0 26px;padding-left:18px}
 .tool li{margin:6px 0}
 .tool .demo{margin-top:auto;border-top:1px solid var(--stone);padding-top:22px}
