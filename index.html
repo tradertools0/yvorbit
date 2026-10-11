@@ -4,261 +4,252 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#F4F0E9">
-<title>YV Orbit — Trading · Technology · Global Perspective</title>
-<meta name="description" content="YV Orbit explores algorithmic trading, Expert Advisor and indicator development, systematic strategy research, and evidence-led backtesting.">
-<meta property="og:title" content="YV Orbit — Trading · Technology · Global Perspective">
-<meta property="og:description" content="Algorithmic trading development and systematic strategy research. Evidence first. Engineering second.">
-<style>
-:root{--cream:#F4F0E9;--green:#3E6B52;--green-dark:#244533;--maroon:#5A1E2B;--grey:#C9C4BB;--ink:#26332C;--muted:#68736B;--line:#DED9D0;--white:#FBFAF7;--max:1160px}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:88px}
-body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}
-a{color:inherit;text-decoration:none}
-.wrap{width:min(calc(100% - 44px),var(--max));margin-inline:auto}
-header{position:sticky;top:0;z-index:20;background:rgba(244,240,233,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.wordmark{font-size:17px;font-weight:750;letter-spacing:.12em;white-space:nowrap}
-.wordmark span{color:var(--maroon)}
-.navlinks{display:flex;align-items:center;gap:25px;color:var(--muted);font-size:12px;letter-spacing:.04em}
-.navlinks a:hover{color:var(--green)}
-.nav-cta{padding:10px 14px;border:1px solid var(--green);color:var(--green);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
-.hero{position:relative;overflow:hidden;padding:100px 0 88px;border-bottom:1px solid var(--line)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:60px;align-items:center}
-.eyebrow{color:var(--green);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
-.hero h1{font-size:clamp(44px,7vw,82px);line-height:.99;letter-spacing:-.065em;font-weight:650;max-width:780px;margin:23px 0}
-.hero h1 em{font-style:normal;color:var(--maroon)}
-.lead{max-width:650px;color:var(--muted);font-size:17px;line-height:1.8}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border:1px solid var(--green);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:transform .18s ease,background .18s ease}
-.btn.primary{background:var(--green);color:#fff}
-.btn.secondary{color:var(--green)}
-.btn:hover{transform:translateY(-1px)}
-.orbit-art{min-height:350px;display:grid;place-items:center;position:relative}
-.orbit-art:before,.orbit-art:after{content:"";position:absolute;border:1px solid rgba(62,107,82,.28);border-radius:50%;width:300px;height:145px;transform:rotate(-25deg)}
-.orbit-art:after{width:360px;height:180px;border-color:rgba(90,30,43,.22);transform:rotate(25deg)}
-.orbital-core{position:relative;width:205px;height:205px;display:grid;place-items:center}
-.monogram{font-size:clamp(100px,13vw,150px);font-weight:800;letter-spacing:-.18em;line-height:1;color:var(--green);transform:translateX(-7px)}
-.monogram span{color:var(--maroon);margin-left:-2px}
-.orbit-line{position:absolute;width:310px;height:90px;border:2px solid var(--green);border-left-color:var(--grey);border-right-color:var(--maroon);border-radius:50%;transform:rotate(-25deg)}
-.orbit-line.two{width:330px;height:110px;border-width:1px;transform:rotate(24deg);border-top-color:var(--grey);border-bottom-color:var(--maroon);opacity:.8}
-.orbit-dot{position:absolute;top:40px;right:6px;width:15px;height:15px;border-radius:50%;background:var(--green);box-shadow:0 0 0 5px rgba(62,107,82,.1)}
-.orbit-note{position:absolute;bottom:0;color:var(--muted);font-size:10px;letter-spacing:.18em;text-transform:uppercase}
-.metrics{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
-.metric{padding:25px 28px;border-right:1px solid var(--line)}
-.metric:last-child{border-right:0}
-.metric strong{display:block;color:var(--green-dark);font-size:14px;letter-spacing:.03em}
-.metric span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
-section.section{padding:86px 0;border-bottom:1px solid var(--line)}
-.section-head{display:grid;grid-template-columns:.65fr 1.35fr;gap:40px;align-items:start;margin-bottom:38px}
-.section-index{color:var(--maroon);font-size:11px;font-weight:700;letter-spacing:.18em}
-.section h2{font-size:clamp(32px,4.6vw,54px);line-height:1.08;letter-spacing:-.05em;font-weight:620;margin:10px 0 15px}
-.section-intro{color:var(--muted);max-width:650px;margin:0;font-size:15px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.card{background:rgba(251,250,247,.78);border:1px solid var(--line);padding:27px;min-height:225px;position:relative;display:block}
-.card:before{content:"";position:absolute;top:-1px;left:-1px;width:42px;height:3px;background:var(--green)}
-.card:nth-child(2):before{background:var(--maroon)}
-.card:nth-child(3):before{background:var(--grey)}
-.card-num{font-size:11px;color:var(--green);letter-spacing:.15em}
-.card h3{font-size:20px;letter-spacing:-.025em;margin:27px 0 10px}
-.card p{color:var(--muted);font-size:13px;margin:0}
-.card-link{display:inline-flex;margin-top:22px;color:var(--green);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--green);padding-bottom:4px}
-.card-interactive{cursor:pointer;transition:transform .18s ease,border-color .18s ease,background .18s ease}
-.card-interactive:hover,.card-interactive:focus-visible{transform:translateY(-3px);border-color:var(--green);background:var(--white);outline:none}
-.card-interactive:focus-visible{box-shadow:0 0 0 3px rgba(62,107,82,.18)}
-.process{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-.step{background:var(--cream);padding:25px}
-.step .num{font-size:11px;color:var(--maroon);letter-spacing:.15em}
-.step h3{font-size:17px;margin:19px 0 7px}
-.step p{font-size:12px;color:var(--muted);margin:0}
-.principles{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.principle{padding:28px;border:1px solid var(--line);background:rgba(251,250,247,.6)}
-.principle h3{margin:0 0 9px;font-size:18px}
-.principle p{margin:0;color:var(--muted);font-size:13px}
-.callout{margin-top:28px;padding:22px 24px;border-left:3px solid var(--maroon);background:rgba(90,30,43,.045);color:var(--muted);font-size:13px}
-.contact{background:var(--green-dark);color:var(--cream);padding:72px 0}
-.contact .eyebrow{color:#D7E3D8}
-.contact-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:45px;align-items:end}
-.contact h2{font-size:clamp(34px,5vw,58px);line-height:1.05;letter-spacing:-.05em;margin:16px 0}
-.contact p{max-width:630px;color:#D0D9D1;font-size:14px}
-.contact .btn{border-color:#D7E3D8;color:var(--cream)}
-.contact .btn.primary{background:var(--cream);color:var(--green-dark);border-color:var(--cream)}
-.contact-links{display:flex;flex-direction:column;gap:12px;align-items:flex-start;font-size:12px;color:#D0D9D1}
-.contact-links a:hover{color:#fff;text-decoration:underline}
-footer{padding:26px 0;background:var(--green-dark);color:#D0D9D1;border-top:1px solid rgba(255,255,255,.14)}
-.footer{display:flex;justify-content:space-between;gap:20px;font-size:11px}
-.footer strong{letter-spacing:.12em;color:var(--cream)}
-.disclaimer{margin-top:10px;max-width:800px;font-size:10px;color:#AEBDB0}
-@media(max-width:850px){.navlinks{gap:14px}.hero-grid{grid-template-columns:1fr;gap:24px}.orbit-art{min-height:300px;order:-1}.hero{padding:65px 0}.section-head{grid-template-columns:1fr;gap:10px}.cards{grid-template-columns:1fr}.card{min-height:0}.process{grid-template-columns:repeat(2,1fr)}.contact-grid{grid-template-columns:1fr}.metrics .metric{padding:20px 14px}}
-@media(max-width:560px){.wrap{width:min(calc(100% - 30px),var(--max))}.nav{height:64px}.navlinks a:not(.nav-cta){display:none}.wordmark{font-size:14px}.hero h1{font-size:47px}.lead{font-size:15px}.orbit-art{min-height:260px;transform:scale(.83);margin:-12px 0}.metrics{grid-template-columns:1fr}.metric{border-right:0;border-bottom:1px solid var(--line)}.metric:last-child{border-bottom:0}.section{padding:62px 0!important}.process{grid-template-columns:1fr}.principles{grid-template-columns:1fr}.footer{flex-direction:column}.contact{padding:58px 0}}
-</style>
+<title>YV Orbit | Expert Advisors, trading tools and strategy research</title>
+<meta name="description" content="YV Orbit builds and tests MetaTrader 5 Expert Advisors and publishes every result, including the losing ones. Free EA on the MQL5 Market, plus tools for auditing MQL5 code and multi-timeframe backtesting.">
+<link rel="canonical" href="https://www.yvorbit.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.yvorbit.com/">
+<meta property="og:title" content="YV Orbit | Research the market. Engineer the rules.">
+<meta property="og:description" content="MT5 Expert Advisors, trading tools and an open test record, including the losses.">
+<meta property="og:image" content="https://www.yvorbit.com/assets/evidence/evidence-04.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23F4F0E9'/%3E%3Ctext x='8' y='46' font-family='Arial Black,Arial' font-weight='900' font-size='36' fill='%233E6B52'%3EY%3C/text%3E%3Ctext x='31' y='46' font-family='Arial Black,Arial' font-weight='900' font-size='36' fill='%235A1E2B'%3EV%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<header>
+
+<header class="site-header">
   <div class="wrap nav">
-    <a class="wordmark" href="#home" aria-label="YV Orbit home">YV <span>ORBIT</span></a>
-    <nav class="navlinks" aria-label="Main navigation">
-      <a href="#focus">Focus</a>
-      <a href="#projects">Projects</a>
-      <a href="#evidence">Evidence</a>
+    <a class="wordmark" href="#top" aria-label="YV Orbit home"><span class="y">Y</span><span class="v">V</span> <span class="o">ORBIT</span></a>
+    <nav class="navlinks" aria-label="Main">
+      <a href="#results">Results</a>
+      <a href="#ea">Free EA</a>
+      <a href="#tools">Tools</a>
       <a href="#method">Method</a>
-      <a href="#principles">Principles</a>
-      <a class="nav-cta" href="#contact">Connect</a>
+      <a class="nav-cta" href="#connect">Connect</a>
     </nav>
   </div>
 </header>
 
-<main id="home">
+<main id="top">
+
+  <!-- HERO -->
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <div class="eyebrow">Trading · Technology · Global Perspective</div>
-        <h1>Research the market.<br><em>Engineer the rules.</em></h1>
-        <p class="lead">YV Orbit is an independent algorithmic-trading development and research initiative focused on Expert Advisors, indicators, systematic strategies, and evidence-led backtesting.</p>
+        <h1>Research the market.<span class="line2">Engineer the rules.</span></h1>
+        <p class="lede">YV Orbit builds MetaTrader 5 Expert Advisors and the tools to test them properly. Every test we run goes on the record below, including the ones that lost money.</p>
         <div class="actions">
-          <a class="btn primary" href="#focus">Explore our focus</a>
-          <a class="btn secondary" href="#method">Our research method</a>
+          <a class="btn solid" href="#results">See the test record</a>
+          <a class="btn" href="https://www.mql5.com/en/market/product/200698" data-mql5 target="_blank" rel="noopener noreferrer">Get the free EA on MQL5</a>
         </div>
       </div>
-      <div class="orbit-art" aria-label="Abstract YV Orbit monogram illustration">
-        <div class="orbital-core">
-          <div class="monogram">Y<span>V</span></div>
-          <div class="orbit-line"></div>
-          <div class="orbit-line two"></div>
-          <div class="orbit-dot"></div>
-        </div>
-        <div class="orbit-note">Independent strategy research</div>
+      <div class="mark" aria-hidden="true">
+        <svg viewBox="0 0 400 400">
+          <ellipse cx="200" cy="205" rx="175" ry="78" fill="none" stroke="#3E6B52" stroke-width="2.5" transform="rotate(-20 200 205)"/>
+          <ellipse cx="200" cy="205" rx="168" ry="66" fill="none" stroke="#5A1E2B" stroke-width="1.5" opacity=".75" transform="rotate(16 200 205)"/>
+          <ellipse cx="200" cy="205" rx="190" ry="110" fill="none" stroke="#C9C2B5" stroke-width="1"/>
+          <text x="200" y="262" text-anchor="middle" font-family="Orbitron, sans-serif" font-weight="800" font-size="170" letter-spacing="-14"><tspan fill="#3E6B52">Y</tspan><tspan fill="#5A1E2B">V</tspan></text>
+          <circle cx="333" cy="120" r="10" fill="#3E6B52"/>
+          <circle cx="333" cy="120" r="17" fill="none" stroke="#3E6B52" stroke-opacity=".2" stroke-width="6"/>
+        </svg>
       </div>
     </div>
   </section>
 
-  <div class="wrap metrics">
-    <div class="metric"><strong>Algorithm Development</strong><span>Expert Advisors, indicators and trading logic</span></div>
-    <div class="metric"><strong>Systematic Research</strong><span>Hypothesis, backtesting and comparative review</span></div>
-    <div class="metric"><strong>Evidence Before Claims</strong><span>Transparent limitations and risk-aware evaluation</span></div>
-  </div>
-
-  <section class="section" id="about">
+  <!-- RECORD STRIP (signature) -->
+  <section class="record" aria-labelledby="record-title">
     <div class="wrap">
-      <div class="section-head">
-        <div><div class="section-index">01 / ABOUT</div><h2>Built around process, not promises.</h2></div>
-        <p class="section-intro">Markets change. Strategies behave differently across instruments, sessions, volatility regimes and execution environments. YV Orbit approaches trading technology as an iterative engineering process: define the idea, encode the rules, test the behaviour, inspect the limitations, and refine only when evidence supports it.</p>
+      <div class="record-top">
+        <h2 id="record-title"><span data-n-loss>10</span> of <span data-n-tests>18</span> published tests lost money. They are all here.</h2>
+        <p>Each dot is one test, placed by its profit factor. Hollow dots are forward tests on a live chart. Select a dot to open its report.</p>
       </div>
-      <div class="callout">Our work is research and development. Historical or demo results are observations—not guarantees of future performance.</div>
+      <div class="strip" data-strip><div class="tip" role="status"></div></div>
+      <div class="legend">
+        <span><i style="background:#8FC1A0"></i>Profit factor above 1.00</span>
+        <span><i style="background:#D9A3AE"></i>Profit factor below 1.00</span>
+        <span><i style="border:2.5px solid #C7D3CA;width:12px;height:12px"></i>Forward test</span>
+      </div>
     </div>
   </section>
 
-  <section class="section" id="focus">
+  <!-- RESULTS LEDGER -->
+  <section class="block" id="results">
     <div class="wrap">
-      <div class="section-head">
-        <div><div class="section-index">02 / AREAS OF FOCUS</div><h2>From trading idea to testable system.</h2></div>
-        <p class="section-intro">A practical development scope across strategy logic, platform implementation and structured evaluation. Each project begins with clear rules and an understanding of what the test can—and cannot—tell us.</p>
+      <div class="block-head">
+        <h2 class="display">The test record</h2>
+        <p class="lede">Numbers are copied from each Strategy Tester or account report. Most tests start from a $1,000 deposit with a fixed 0.01 lot. Select any row to see the original image.</p>
       </div>
-      <div class="cards">
-        <article class="card"><div class="card-num">01 — DEVELOPMENT</div><h3>Expert Advisors</h3><p>MT5 / MQL5 automation, entry and exit logic, position management, session filters, execution safeguards and state handling.</p></article>
-        <article class="card"><div class="card-num">02 — INDICATORS</div><h3>Trading Tools</h3><p>Indicator logic, signal conditions, market-structure tools and TradingView Pine Script concepts translated into testable rules.</p></article>
-        <article class="card"><div class="card-num">03 — RESEARCH</div><h3>Strategy Evaluation</h3><p>Breakout, trend, pullback, mean-reversion and market-behaviour hypotheses evaluated through structured historical testing.</p></article>
+
+      <div class="filters" role="group" aria-label="Filter tests">
+        <button class="filter" type="button" data-filter="all" aria-pressed="true">All<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="win" aria-pressed="false">Above breakeven<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="loss" aria-pressed="false">Below breakeven<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="forward" aria-pressed="false">Forward tests and updates<span class="count"></span></button>
       </div>
+
+      <table class="ledger">
+        <thead>
+          <tr>
+            <th scope="col">Test</th>
+            <th scope="col">Type</th>
+            <th scope="col" class="num hide-s">Trades</th>
+            <th scope="col" class="num hide-m">Win rate</th>
+            <th scope="col" class="num">Net</th>
+            <th scope="col" class="num hide-s">PF</th>
+            <th scope="col"><span class="sr-only">Profit factor bar, line marks 1.00</span></th>
+          </tr>
+        </thead>
+        <tbody data-ledger></tbody>
+      </table>
+
+      <p class="fine ledger-note">PF is profit factor: gross profit divided by gross loss. Above 1.00 means the test made money. Backtests show how rules behaved on past data under specific spreads and settings. They do not predict future results. <a href="evidence.html">Browse all <span data-n-images>15</span> report images</a>.</p>
     </div>
   </section>
 
-  <section class="section" id="projects">
-    <div class="wrap">
-      <div class="section-head">
-        <div><div class="section-index">03 / FEATURED PROJECT</div><h2>Built, published, and open to testing.</h2></div>
-        <p class="section-intro">A first published Expert Advisor marks the beginning of the YV Orbit project portfolio. The focus is on clear strategy logic, careful testing, and learning from real feedback.</p>
-      </div>
-      <div class="cards">
-        <article class="card">
-          <div class="card-num">MQL5 MARKET — FREE</div>
-          <h3>Consecutive Candle Reversal</h3>
-          <p>An Expert Advisor built around consecutive-candle reversal logic. Review the product details, test it in MetaTrader, and share constructive feedback.</p>
-          <div class="actions"><a class="btn primary" href="https://www.mql5.com/en/market/product/200698" target="_blank" rel="noopener noreferrer">View EA on MQL5</a></div>
-        </article>
-        <article class="card"><div class="card-num">TESTING FIRST</div><h3>Evaluate Independently</h3><p>Review the settings and test the EA on your own data and broker environment before considering any live use. Results can vary across conditions.</p></article>
-        <article class="card"><div class="card-num">COMMUNITY FEEDBACK</div><h3>Help Improve the Work</h3><p>Useful feedback includes reproducible observations, platform details, test conditions, and potential logic or usability issues.</p></article>
-      </div>
-      <div class="callout">Backtest results do not guarantee future performance. The EA is provided for independent testing and evaluation; trading involves risk.</div>
-    </div>
-  </section>
-
-  <!-- NEW: Evidence Library card. It links to the separate evidence page. -->
-  <section class="section" id="evidence">
-    <div class="wrap">
-      <div class="section-head">
-        <div><div class="section-index">04 / RESEARCH ARCHIVE</div><h2>Evidence behind the process.</h2></div>
-        <p class="section-intro">Explore selected backtest screenshots and research records from the YV Orbit development archive. Open the Evidence Library to inspect individual images at full resolution.</p>
-      </div>
-      <div class="cards">
-        <a class="card card-interactive" href="/evidence.html" aria-label="Open the YV Orbit Evidence Library">
-          <div class="card-num">OPEN RESEARCH ARCHIVE ↗</div>
-          <h3>Evidence Library</h3>
-          <p>Browse selected backtest and strategy research screenshots. Open individual images to inspect the full-resolution records.</p>
-          <span class="card-link">Explore Evidence →</span>
-        </a>
-        <div class="card"><div class="card-num">RESEARCH RECORDS</div><h3>Documented Testing</h3><p>Review screenshots as records of specific historical testing conditions, not as promises of future outcomes.</p></div>
-        <div class="card"><div class="card-num">RISK-AWARE REVIEW</div><h3>Context Matters</h3><p>Instrument, timeframe, spread, execution settings and testing assumptions can materially affect observed results.</p></div>
-      </div>
-      <div class="callout">Historical testing documents observed behaviour under specific conditions. They do not guarantee future performance.</div>
-    </div>
-  </section>
-
-  <section class="section" id="method">
-    <div class="wrap">
-      <div class="section-head">
-        <div><div class="section-index">05 / WORKFLOW</div><h2>A repeatable research loop.</h2></div>
-        <p class="section-intro">A result is useful only when the rules, assumptions and testing conditions are understood. The workflow separates strategy ideas from implementation issues and observed performance.</p>
-      </div>
-      <div class="process">
-        <div class="step"><div class="num">STEP 01</div><h3>Define</h3><p>Document the hypothesis, instrument, timeframe, entry/exit rules and risk constraints.</p></div>
-        <div class="step"><div class="num">STEP 02</div><h3>Build</h3><p>Implement the logic with explicit conditions, safeguards and traceable settings.</p></div>
-        <div class="step"><div class="num">STEP 03</div><h3>Test</h3><p>Run historical or demo evaluation and record assumptions, costs and observed behaviour.</p></div>
-        <div class="step"><div class="num">STEP 04</div><h3>Review</h3><p>Inspect drawdown, execution, failure modes and limitations before deciding the next iteration.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="principles">
-    <div class="wrap">
-      <div class="section-head">
-        <div><div class="section-index">06 / PRINCIPLES</div><h2>Evidence is part of the design.</h2></div>
-        <p class="section-intro">We aim to communicate what was tested, how it was tested and where uncertainty remains. Strong branding should never replace sound research or honest reporting.</p>
-      </div>
-      <div class="principles">
-        <div class="principle"><h3>Transparent evaluation</h3><p>Separate backtests, demo observations and live trading. Avoid presenting one as proof of another.</p></div>
-        <div class="principle"><h3>Risk-aware engineering</h3><p>Consider spread, slippage, contract specifications, position sizing, drawdown and market regime.</p></div>
-        <div class="principle"><h3>Iterative improvement</h3><p>Use failures and weak outcomes to investigate assumptions—not to hide inconvenient evidence.</p></div>
-        <div class="principle"><h3>Platform-aware logic</h3><p>Recognize that symbol specifications and execution behaviour can differ between brokers and environments.</p></div>
-      </div>
-      <div class="callout"><strong>Coverage areas:</strong> Forex and CFDs, indices, metals such as gold, and selected digital-asset instruments—subject to platform availability and instrument specifications.</div>
-    </div>
-  </section>
-
-  <section class="contact" id="contact">
-    <div class="wrap contact-grid">
+  <!-- FREE EA -->
+  <section class="block" id="ea">
+    <div class="wrap ea">
       <div>
-        <div class="eyebrow">YV ORBIT</div>
-        <h2>Trading.<br>Technology.<br>Global perspective.</h2>
-        <p>Follow the research journey for strategy experiments, development notes, backtest observations and market-behaviour reviews.</p>
-        <div class="actions"><a class="btn primary" href="https://yvorbit.vercel.app/">Visit YV Orbit</a></div>
+        <p class="kicker">Published on the MQL5 Market</p>
+        <h3>Consecutive Candle Reversal</h3>
+        <p class="lede">Our first Expert Advisor to pass MQL5 Market validation. It waits for a run of same-direction candles and trades the reversal, with a stop-loss and take-profit on every trade. It is free so traders can test it on their own broker and tell us what they find.</p>
+        <div class="actions" style="margin-top:28px">
+          <a class="btn solid" href="https://www.mql5.com/en/market/product/200698" data-mql5 target="_blank" rel="noopener noreferrer">Download from MQL5</a>
+          <a class="btn" href="#connect" data-request="Feedback on Consecutive Candle Reversal">Send feedback</a>
+        </div>
       </div>
-      <div class="contact-links">
-        <strong>PUBLIC PROFILES</strong>
-        <a href="https://www.mql5.com/en/market/product/200698" target="_blank" rel="noopener noreferrer">MQL5 Market — Consecutive Candle Reversal</a>
-        <a href="https://github.com/tradertools0/yvorbit" target="_blank" rel="noopener noreferrer">GitHub — YV Orbit repository</a>
-        <a href="/evidence.html">Research Evidence — Evidence Library</a>
-        <a href="https://yvorbit.vercel.app/">YV Orbit — official website</a>
-        <span>For now, this page is focused on brand presence and research visibility.</span>
+      <dl class="ea-facts">
+        <div><dt>Price</dt><dd>Free</dd></div>
+        <div><dt>Platform</dt><dd>MetaTrader 5</dd></div>
+        <div><dt>Built and first tested on</dt><dd>EURUSD M1</dd></div>
+        <div><dt>Current version</dt><dd>1.3</dd></div>
+        <div><dt>Account types</dt><dd>Hedging and netting</dd></div>
+        <div><dt>Safety checks</dt><dd>Margin, stop levels, lot step</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section class="block" id="tools">
+    <div class="wrap">
+      <div class="block-head">
+        <h2 class="display">Tools we built for our own work</h2>
+        <p class="lede">Most EA problems are found too late, after hours of backtesting. These two tools move the checks earlier and make testing repeatable.</p>
       </div>
+
+      <div class="tools">
+        <article class="tool">
+          <span class="platform">Runs in the browser</span>
+          <h3>YV EA Audit</h3>
+          <p>Load an MQL5 Expert Advisor and get a plain report on what is wrong in the code before you spend time testing it.</p>
+          <ul>
+            <li>Finds weak spots: missing margin and stop-level checks, unchecked indicator reads, risky loops and state bugs</li>
+            <li>Checks each indicator against its original source instead of trusting its name</li>
+            <li>Explains the problem, why it matters and the exact lines affected</li>
+            <li>Suggests corrected code when you ask for it</li>
+          </ul>
+          <div class="demo">
+            <div class="demo-label">Each indicator in the EA gets one of these verdicts</div>
+            <div class="verdicts">
+              <span class="v-ok">Exact</span><span class="v-ok">Standard</span><span class="v-mid">Modified</span><span class="v-mid">Variant</span><span class="v-bad">Incorrect</span><span class="v-bad">Unverified</span>
+            </div>
+            <div class="status"><span>In private use</span><a class="btn" href="#connect" data-request="Access to YV EA Audit">Request access</a></div>
+          </div>
+        </article>
+
+        <article class="tool">
+          <span class="platform">Windows app, no setup needed</span>
+          <h3>YV Multi-Timeframe Tester</h3>
+          <p>Choose an EA once and run it through the real MT5 Strategy Tester on every timeframe with one click.</p>
+          <ul>
+            <li>Drives MetaTrader 5's own tester, so results match what you would get by hand</li>
+            <li>Never changes the EA or replaces MT5's backtest engine</li>
+            <li>Combines every run into one master report</li>
+            <li>Saves a run manifest so any result can be reproduced and audited</li>
+          </ul>
+          <div class="demo">
+            <div class="demo-label">One EA in, one combined report out</div>
+            <div class="tf-flow">
+              <span class="tf">M1</span><span class="tf">M5</span><span class="tf">M15</span><span class="tf">M30</span><span class="tf">H1</span><span class="tf">H4</span><span class="tf">D1</span>
+              <span class="arrow" aria-hidden="true">&rarr;</span><span class="out">Master report</span>
+            </div>
+            <div class="status"><span>In private use</span><a class="btn" href="#connect" data-request="Access to YV Multi-Timeframe Tester">Request access</a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHOD -->
+  <section class="block" id="method">
+    <div class="wrap">
+      <div class="block-head">
+        <h2 class="display">How each EA is built</h2>
+        <p class="lede">A result only means something when the rules and test conditions are known. The same four steps apply to every project on the record.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>Define</h3><p>Write down the idea, market, timeframe, entry and exit rules and risk limits before any code.</p></div>
+        <div class="step"><h3>Build and audit</h3><p>Code the rules with explicit safeguards, then audit the code and indicators before testing.</p></div>
+        <div class="step"><h3>Test</h3><p>Backtest across timeframes and brokers, then forward test on a live chart.</p></div>
+        <div class="step"><h3>Publish and review</h3><p>Post the result, good or bad, and decide the next change from the evidence.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONNECT -->
+  <section class="connect" id="connect">
+    <div class="wrap connect-grid">
+      <div>
+        <h2 class="display">Follow the work or get in touch</h2>
+        <p class="lede">New tests, EA updates and tool releases are posted on these channels first. Questions about the free EA, the tools or a strategy you want tested are welcome.</p>
+        <div class="socials" data-socials></div>
+      </div>
+
+      <form class="form" id="contact-form" novalidate>
+        <h3>Send a message</h3>
+        <p>Tell us what you need and how to reach you.</p>
+        <div class="form-row">
+          <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+          <div class="field"><label for="f-reply">Email or WhatsApp</label><input id="f-reply" name="reply" autocomplete="email"></div>
+        </div>
+        <div class="field">
+          <label for="f-topic">Topic</label>
+          <select id="f-topic" name="topic">
+            <option>Feedback on Consecutive Candle Reversal</option>
+            <option>Access to YV EA Audit</option>
+            <option>Access to YV Multi-Timeframe Tester</option>
+            <option>Custom EA or strategy testing</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-message">Message</label><textarea id="f-message" name="message" required></textarea></div>
+        <button class="btn solid" type="submit">Send message</button>
+        <p class="form-msg" role="status"></p>
+      </form>
     </div>
   </section>
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
-    <div class="footer"><div><strong>YV ORBIT</strong><br>Trading · Technology · Global Perspective</div><div>© <span id="year">2026</span> YV Orbit. All rights reserved.</div></div>
-    <p class="disclaimer">Risk disclosure: Trading involves substantial risk and may not be suitable for every participant. Examples, research notes, historical tests and demo results are informational only and do not guarantee future results or constitute investment advice.</p>
+    <div class="footer-row">
+      <a class="wordmark" href="#top"><span class="y">Y</span><span class="v">V</span> <span class="o">ORBIT</span></a>
+      <span>© <span data-year>2026</span> YV Orbit. yvorbit.com</span>
+    </div>
+    <p class="risk">Trading leveraged products such as forex, CFDs, metals and crypto carries a high risk of losing money. Backtests, forward tests and reports on this site describe past behaviour under specific settings and are shared for research and education. They are not investment advice and do not guarantee future results. Test any EA on a demo account before using it live.</p>
   </div>
 </footer>
-<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="Test report">
+  <button class="close" type="button" aria-label="Close report">&times;</button>
+  <figure><img alt=""><figcaption></figcaption></figure>
+</div>
+
+<script src="assets/config.js"></script>
+<script src="assets/records.js"></script>
+<script src="assets/site.js"></script>
 </body>
 </html>
