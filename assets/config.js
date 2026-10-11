@@ -6,19 +6,22 @@
 
 window.YV_CONFIG = {
   // WhatsApp: country code ke saath, bina + aur space ke. Example: "919876543210"
-  whatsapp: "",
+  whatsapp: "918401933155",
 
   // Telegram channel ya profile ka poora link. Example: "https://t.me/yvorbit"
-  telegram: "",
+  telegram: "https://t.me/krunalchav777",
 
   // Instagram profile ka poora link. Example: "https://instagram.com/yvorbit"
-  instagram: "",
+  instagram: "https://www.instagram.com/krunalchav777/",
+
+  // Threads profile ka poora link
+  threads: "https://www.threads.net/@krunalchav777",
 
   // YouTube channel ka poora link
   youtube: "",
 
   // X (Twitter) profile ka poora link
-  x: "",
+  x: "https://x.com/krunalchav777",
 
   // LinkedIn profile ya page ka poora link
   linkedin: "",
