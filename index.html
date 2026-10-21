@@ -3,16 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#F4F0E9">
+<meta name="theme-color" content="#05080F">
+<meta name="color-scheme" content="dark">
 <title>YV Orbit | Expert Advisors, trading tools and strategy research</title>
-<meta name="description" content="YV Orbit builds and tests MetaTrader 5 Expert Advisors and publishes every result, including the losing ones. Free EA on the MQL5 Market, plus tools for auditing MQL5 code and multi-timeframe backtesting.">
+<meta name="description" content="YV Orbit builds and tests MetaTrader 5 Expert Advisors and publishes every result, including the losing ones. Two EAs on the MQL5 Market, plus tools for auditing MQL5 code, multi-timeframe backtesting and reverse-engineering trade histories.">
 <link rel="canonical" href="https://www.yvorbit.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.yvorbit.com/">
 <meta property="og:title" content="YV Orbit | Research the market. Engineer the rules.">
 <meta property="og:description" content="MT5 Expert Advisors, trading tools and an open test record, including the losses.">
-<meta property="og:image" content="https://www.yvorbit.com/assets/evidence/evidence-04.jpg">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23F4F0E9'/%3E%3Ctext x='8' y='46' font-family='Arial Black,Arial' font-weight='900' font-size='36' fill='%233E6B52'%3EY%3C/text%3E%3Ctext x='31' y='46' font-family='Arial Black,Arial' font-weight='900' font-size='36' fill='%235A1E2B'%3EV%3C/text%3E%3C/svg%3E">
+<meta property="og:image" content="https://www.yvorbit.com/assets/brand/og-image.jpg">
+<link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -22,10 +23,10 @@
 
 <header class="site-header">
   <div class="wrap nav">
-    <a class="wordmark" href="#top" aria-label="YV Orbit home"><span class="y">Y</span><span class="v">V</span> <span class="o">ORBIT</span></a>
+    <a class="wordmark" href="#top" aria-label="YV Orbit home"><svg class="cmark" viewBox="-30 -30 510 790" aria-hidden="true"><g stroke-width="11"><line x1="56" y1="113" x2="142" y2="18"/><line x1="142" y1="18" x2="173" y2="33"/><line x1="173" y1="33" x2="100" y2="113"/><line x1="80" y1="118" x2="59" y2="224"/><line x1="59" y1="224" x2="58" y2="255"/><line x1="58" y1="255" x2="60" y2="281"/><line x1="60" y1="281" x2="180" y2="360"/><line x1="186" y1="265" x2="180" y2="360"/><line x1="180" y1="360" x2="210" y2="373"/><line x1="210" y1="373" x2="418" y2="421"/><line x1="413" y1="263" x2="413" y2="317"/><line x1="413" y1="317" x2="427" y2="396"/><line x1="427" y1="396" x2="418" y2="421"/><line x1="418" y1="421" x2="377" y2="482"/><line x1="377" y1="482" x2="345" y2="502"/><line x1="210" y1="373" x2="164" y2="498"/><line x1="60" y1="281" x2="94" y2="524"/><line x1="94" y1="524" x2="133" y2="513"/><line x1="133" y1="513" x2="164" y2="498"/><line x1="94" y1="524" x2="21" y2="658"/><line x1="164" y1="498" x2="202" y2="575"/><line x1="202" y1="575" x2="236" y2="714"/></g><circle cx="142" cy="18" r="30"/><circle cx="173" cy="33" r="21"/><circle cx="56" cy="113" r="30"/><circle cx="100" cy="113" r="30"/><circle cx="59" cy="224" r="21"/><circle cx="58" cy="255" r="21"/><circle cx="60" cy="281" r="30"/><circle cx="186" cy="265" r="30" class="ember"/><circle cx="180" cy="360" r="21"/><circle cx="210" cy="373" r="30"/><circle cx="413" cy="263" r="30"/><circle cx="413" cy="317" r="21"/><circle cx="427" cy="396" r="21"/><circle cx="418" cy="421" r="30"/><circle cx="377" cy="482" r="21"/><circle cx="345" cy="502" r="21"/><circle cx="164" cy="498" r="30"/><circle cx="133" cy="513" r="21"/><circle cx="94" cy="524" r="30"/><circle cx="21" cy="658" r="30"/><circle cx="202" cy="575" r="21"/><circle cx="236" cy="714" r="30"/></svg><span>YV<span class="gap">ORBIT</span></span></a>
     <nav class="navlinks" aria-label="Main">
       <a href="#results">Results</a>
-      <a href="#ea">Free EA</a>
+      <a href="#ea">EAs</a>
       <a href="#tools">Tools</a>
       <a href="#method">Method</a>
       <a class="nav-cta" href="#connect">Connect</a>
@@ -39,23 +40,22 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
+        <p class="kicker">MT5 Expert Advisors · Trading tools · Open test record</p>
         <h1>Research the market.<span class="line2">Engineer the rules.</span></h1>
         <p class="lede">YV Orbit builds MetaTrader 5 Expert Advisors and the tools to test them properly. Every test we run goes on the record below, including the ones that lost money.</p>
         <div class="actions">
           <a class="btn solid" href="#results">See the test record</a>
-          <a class="btn" href="https://www.mql5.com/en/market/product/200698" data-mql5 target="_blank" rel="noopener noreferrer">Get the free EA on MQL5</a>
+          <a class="btn" href="#ea">Our EAs on MQL5</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong data-n-tests>18</strong>Tests on the record</div>
+          <div><strong>2</strong>EAs on the MQL5 Market</div>
+          <div><strong>3</strong>In-house tools</div>
         </div>
       </div>
-      <div class="mark" aria-hidden="true">
-        <svg viewBox="0 0 400 400">
-          <ellipse cx="200" cy="205" rx="175" ry="78" fill="none" stroke="#3E6B52" stroke-width="2.5" transform="rotate(-20 200 205)"/>
-          <ellipse cx="200" cy="205" rx="168" ry="66" fill="none" stroke="#5A1E2B" stroke-width="1.5" opacity=".75" transform="rotate(16 200 205)"/>
-          <ellipse cx="200" cy="205" rx="190" ry="110" fill="none" stroke="#C9C2B5" stroke-width="1"/>
-          <text x="200" y="262" text-anchor="middle" font-family="Orbitron, sans-serif" font-weight="800" font-size="170" letter-spacing="-14"><tspan fill="#3E6B52">Y</tspan><tspan fill="#5A1E2B">V</tspan></text>
-          <circle cx="333" cy="120" r="10" fill="#3E6B52"/>
-          <circle cx="333" cy="120" r="17" fill="none" stroke="#3E6B52" stroke-opacity=".2" stroke-width="6"/>
-        </svg>
-      </div>
+      <figure class="logo-frame">
+        <img src="assets/brand/yv-orbit-logo.jpg" width="1200" height="1200" alt="YV Orbit logo: a constellation of stars beneath the Milky Way">
+      </figure>
     </div>
   </section>
 
@@ -68,9 +68,9 @@
       </div>
       <div class="strip" data-strip><div class="tip" role="status"></div></div>
       <div class="legend">
-        <span><i style="background:#8FC1A0"></i>Profit factor above 1.00</span>
-        <span><i style="background:#D9A3AE"></i>Profit factor below 1.00</span>
-        <span><i style="border:2.5px solid #C7D3CA;width:12px;height:12px"></i>Forward test</span>
+        <span><i style="background:var(--pos)"></i>Profit factor above 1.00</span>
+        <span><i style="background:var(--neg)"></i>Profit factor below 1.00</span>
+        <span><i style="border:2.5px solid var(--muted);width:12px;height:12px"></i>Forward test</span>
       </div>
     </div>
   </section>
@@ -109,26 +109,51 @@
     </div>
   </section>
 
-  <!-- FREE EA -->
+  <!-- EAs ON MQL5 -->
   <section class="block" id="ea">
-    <div class="wrap ea">
-      <div>
-        <p class="kicker">Published on the MQL5 Market</p>
-        <h3>Consecutive Candle Reversal</h3>
-        <p class="lede">Our first Expert Advisor to pass MQL5 Market validation. It waits for a run of same-direction candles and trades the reversal, with a stop-loss and take-profit on every trade. It is free so traders can test it on their own broker and tell us what they find.</p>
-        <div class="actions" style="margin-top:28px">
-          <a class="btn solid" href="https://www.mql5.com/en/market/product/200698" data-mql5 target="_blank" rel="noopener noreferrer">Download from MQL5</a>
-          <a class="btn" href="#connect" data-request="Feedback on Consecutive Candle Reversal">Send feedback</a>
-        </div>
+    <div class="wrap">
+      <div class="block-head">
+        <h2 class="display">Our EAs on the MQL5 Market</h2>
+        <p class="lede">Both passed MQL5 Market validation. One is free so traders can test our work on their own broker. The other is our first paid release.</p>
       </div>
-      <dl class="ea-facts">
-        <div><dt>Price</dt><dd>Free</dd></div>
-        <div><dt>Platform</dt><dd>MetaTrader 5</dd></div>
-        <div><dt>Built and first tested on</dt><dd>EURUSD M1</dd></div>
-        <div><dt>Current version</dt><dd>1.3</dd></div>
-        <div><dt>Account types</dt><dd>Hedging and netting</dd></div>
-        <div><dt>Safety checks</dt><dd>Margin, stop levels, lot step</dd></div>
-      </dl>
+
+      <div class="eas">
+        <article class="ea-card">
+          <span class="badge free">Free</span>
+          <h3>Consecutive Candle Reversal</h3>
+          <p>Our first Expert Advisor to pass MQL5 Market validation. It waits for a run of same-direction candles and trades the reversal, with a stop-loss and take-profit on every trade.</p>
+          <dl class="ea-facts">
+            <div><dt>Platform</dt><dd>MetaTrader 5</dd></div>
+            <div><dt>Built and first tested on</dt><dd>EURUSD M1</dd></div>
+            <div><dt>Current version</dt><dd>1.3</dd></div>
+            <div><dt>Account types</dt><dd>Hedging and netting</dd></div>
+            <div><dt>Safety checks</dt><dd>Margin, stop levels, lot step</dd></div>
+            <div><dt>Price</dt><dd>Free</dd></div>
+          </dl>
+          <div class="actions">
+            <a class="btn solid" href="https://www.mql5.com/en/market/product/200698" data-mql5 target="_blank" rel="noopener noreferrer">Download from MQL5</a>
+            <a class="btn" href="#connect" data-request="Feedback on Consecutive Candle Reversal">Send feedback</a>
+          </div>
+        </article>
+
+        <article class="ea-card">
+          <span class="badge paid">Paid</span>
+          <h3>Two Frame Momentum Trend</h3>
+          <p>Uses two timeframes: a higher one to set the direction and the chart timeframe to time the entry. Every trade has a stop-loss, and the stop moves to breakeven once the trade reaches 1R.</p>
+          <dl class="ea-facts">
+            <div><dt>Platform</dt><dd>MetaTrader 5</dd></div>
+            <div><dt>Recommended timeframe</dt><dd>M15</dd></div>
+            <div><dt>Other timeframes</dt><dd>Supported</dd></div>
+            <div><dt>Risk control</dt><dd>Stop-loss, breakeven at 1R</dd></div>
+            <div><dt>Market validation</dt><dd>Passed</dd></div>
+            <div><dt>Price</dt><dd>See MQL5 page</dd></div>
+          </dl>
+          <div class="actions">
+            <a class="btn solid" href="#connect" data-mql5-2 target="_blank" rel="noopener noreferrer">View on MQL5</a>
+            <a class="btn" href="#connect" data-request="Question about Two Frame Momentum Trend">Ask a question</a>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -137,7 +162,7 @@
     <div class="wrap">
       <div class="block-head">
         <h2 class="display">Tools we built for our own work</h2>
-        <p class="lede">Most EA problems are found too late, after hours of backtesting. These two tools move the checks earlier and make testing repeatable.</p>
+        <p class="lede">Most EA problems are found too late, after hours of backtesting. These three tools move the checks earlier and make testing repeatable.</p>
       </div>
 
       <div class="tools">
@@ -147,7 +172,7 @@
           <p>Upload or paste an MQL5 Expert Advisor and get a plain report on what is wrong in the code before you spend time testing it.</p>
           <a class="tool-shot" href="assets/tools/yv-ea-audit.jpg" target="_blank" rel="noopener"><img loading="lazy" src="assets/tools/yv-ea-audit.jpg" width="1344" height="642" alt="YV EA Audit screen with the MQL5 source box and the audit steps"></a>
           <ul>
-            <li>Finds weak spots: missing margin and stop-level checks, unchecked indicator reads, risky loops and state bugs</li>
+            <li>Finds missing margin and stop-level checks, unchecked indicator reads, risky loops and state bugs</li>
             <li>Checks each indicator against its original source instead of trusting its name</li>
             <li>Explains the problem, why it matters and the exact lines affected</li>
             <li>Suggests corrected code when you ask for it</li>
@@ -175,10 +200,31 @@
           <div class="demo">
             <div class="demo-label">One EA in, one combined report out</div>
             <div class="tf-flow">
-              <span class="tf">M1</span><span class="tf">M3</span><span class="tf">M5</span><span class="tf">M10</span><span class="tf">M15</span><span class="tf">M20</span><span class="tf">and more</span>
+              <span class="tf">M1</span><span class="tf">M3</span><span class="tf">M5</span><span class="tf">M15</span><span class="tf">more</span>
               <span class="arrow" aria-hidden="true">&rarr;</span><span class="out">Master report</span>
             </div>
             <div class="status"><span>In private use</span><a class="btn" href="#connect" data-request="Access to YV Multi-Timeframe Tester">Request access</a></div>
+          </div>
+        </article>
+
+        <article class="tool">
+          <span class="platform">Windows app, no setup needed</span>
+          <h3>YV Reverse Engine</h3>
+          <p>Load the MT5 trade history of any EA and get a forensic report on how it actually trades, plus a replica EA you can test yourself.</p>
+          <a class="tool-shot" href="assets/tools/yv-reverse-engine.jpg" target="_blank" rel="noopener"><img loading="lazy" src="assets/tools/yv-reverse-engine.jpg" width="1280" height="640" alt="YV Reverse Engine window with a loaded trade history and the forensic report" onerror="this.parentNode.classList.add('empty');this.parentNode.removeAttribute('href');this.parentNode.textContent='Screenshot coming soon'"></a>
+          <ul>
+            <li>Decodes entries, exits, lot sizing and position stacking from the history alone</li>
+            <li>Handles grid, basket, martingale and single-position EAs</li>
+            <li>Optional M1 price data for a closer match on entry timing</li>
+            <li>Outputs a forensic report and a replica .mq5 source file</li>
+          </ul>
+          <div class="demo">
+            <div class="demo-label">Trade history in, two files out</div>
+            <div class="tf-flow">
+              <span class="tf">Trade history</span><span class="tf">+ M1 data</span>
+              <span class="arrow" aria-hidden="true">&rarr;</span><span class="out">Report</span><span class="out">Replica EA</span>
+            </div>
+            <div class="status"><span>In private use</span><a class="btn" href="#connect" data-request="Access to YV Reverse Engine">Request access</a></div>
           </div>
         </article>
       </div>
@@ -206,7 +252,7 @@
     <div class="wrap connect-grid">
       <div>
         <h2 class="display">Follow the work or get in touch</h2>
-        <p class="lede">New tests, EA updates and tool releases are posted on these channels first. Questions about the free EA, the tools or a strategy you want tested are welcome.</p>
+        <p class="lede">New tests, EA updates and tool releases are posted on these channels first. Questions about our EAs, the tools or a strategy you want tested are welcome.</p>
         <div class="socials" data-socials></div>
       </div>
 
@@ -221,9 +267,12 @@
           <label for="f-topic">Topic</label>
           <select id="f-topic" name="topic">
             <option>Feedback on Consecutive Candle Reversal</option>
+            <option>Question about Two Frame Momentum Trend</option>
             <option>Access to YV EA Audit</option>
             <option>Access to YV Multi-Timeframe Tester</option>
+            <option>Access to YV Reverse Engine</option>
             <option>Custom EA or strategy testing</option>
+            <option>Broker or IB collaboration</option>
             <option>Something else</option>
           </select>
         </div>
@@ -238,7 +287,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-row">
-      <a class="wordmark" href="#top"><span class="y">Y</span><span class="v">V</span> <span class="o">ORBIT</span></a>
+      <a class="wordmark" href="#top"><svg class="cmark" viewBox="-30 -30 510 790" aria-hidden="true"><g stroke-width="11"><line x1="56" y1="113" x2="142" y2="18"/><line x1="142" y1="18" x2="173" y2="33"/><line x1="173" y1="33" x2="100" y2="113"/><line x1="80" y1="118" x2="59" y2="224"/><line x1="59" y1="224" x2="58" y2="255"/><line x1="58" y1="255" x2="60" y2="281"/><line x1="60" y1="281" x2="180" y2="360"/><line x1="186" y1="265" x2="180" y2="360"/><line x1="180" y1="360" x2="210" y2="373"/><line x1="210" y1="373" x2="418" y2="421"/><line x1="413" y1="263" x2="413" y2="317"/><line x1="413" y1="317" x2="427" y2="396"/><line x1="427" y1="396" x2="418" y2="421"/><line x1="418" y1="421" x2="377" y2="482"/><line x1="377" y1="482" x2="345" y2="502"/><line x1="210" y1="373" x2="164" y2="498"/><line x1="60" y1="281" x2="94" y2="524"/><line x1="94" y1="524" x2="133" y2="513"/><line x1="133" y1="513" x2="164" y2="498"/><line x1="94" y1="524" x2="21" y2="658"/><line x1="164" y1="498" x2="202" y2="575"/><line x1="202" y1="575" x2="236" y2="714"/></g><circle cx="142" cy="18" r="30"/><circle cx="173" cy="33" r="21"/><circle cx="56" cy="113" r="30"/><circle cx="100" cy="113" r="30"/><circle cx="59" cy="224" r="21"/><circle cx="58" cy="255" r="21"/><circle cx="60" cy="281" r="30"/><circle cx="186" cy="265" r="30" class="ember"/><circle cx="180" cy="360" r="21"/><circle cx="210" cy="373" r="30"/><circle cx="413" cy="263" r="30"/><circle cx="413" cy="317" r="21"/><circle cx="427" cy="396" r="21"/><circle cx="418" cy="421" r="30"/><circle cx="377" cy="482" r="21"/><circle cx="345" cy="502" r="21"/><circle cx="164" cy="498" r="30"/><circle cx="133" cy="513" r="21"/><circle cx="94" cy="524" r="30"/><circle cx="21" cy="658" r="30"/><circle cx="202" cy="575" r="21"/><circle cx="236" cy="714" r="30"/></svg><span>YV<span class="gap">ORBIT</span></span></a>
       <span>© <span data-year>2026</span> YV Orbit. yvorbit.com</span>
     </div>
     <p class="risk">Trading leveraged products such as forex, CFDs, metals and crypto carries a high risk of losing money. Backtests, forward tests and reports on this site describe past behaviour under specific settings and are shared for research and education. They are not investment advice and do not guarantee future results. Test any EA on a demo account before using it live.</p>
