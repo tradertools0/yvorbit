@@ -11,7 +11,7 @@ window.YV_CONFIG = {
   // Telegram channel ya profile ka poora link. Example: "https://t.me/yvorbit"
   telegram: "https://t.me/krunalchav777",
 
-  // Instagram profile ka poora link. Example: "https://instagram.com/yvorbit"
+  // Instagram profile ka poora link
   instagram: "https://www.instagram.com/krunalchav777/",
 
   // Threads profile ka poora link
@@ -26,10 +26,27 @@ window.YV_CONFIG = {
   // LinkedIn profile ya page ka poora link
   linkedin: "",
 
+  // Facebook page ka poora link
+  facebook: "",
+
+  // TradingView profile ka poora link (link sahi hai, ek baar khol ke check kar lena)
+  tradingview: "https://www.tradingview.com/u/chavdakrunal/",
+
+  // Medium profile ka poora link. Example: "https://medium.com/@yvorbit"
+  medium: "",
+
+  // Myfxbook profile ya live account ka poora link
+  myfxbook: "",
+
   // Contact email. Example: "hello@yvorbit.com"
   email: "",
 
-  // Ye already set hain
+  // Free EA (Consecutive Candle Reversal) — already set
   mql5Product: "https://www.mql5.com/en/market/product/200698",
+
+  // Paid EA (Two Frame Momentum Trend) ka MQL5 product link yahan daalo.
+  // Khali rahega to button "Ask about this EA" ban jayega.
+  mql5Product2: "",
+
   github: "https://github.com/tradertools0/yvorbit"
 };

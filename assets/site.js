@@ -31,6 +31,10 @@
     youtube: '<path d="M22.5 7.2a2.8 2.8 0 0 0-2-2C18.8 4.8 12 4.8 12 4.8s-6.8 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 4.8 2.8 2.8 0 0 0 2 2c1.7.4 8.5.4 8.5.4s6.8 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-4.8ZM9.8 15V9l5.7 3-5.7 3Z"/>',
     x: '<path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.2-8.3L1.9 3h6.3l4.4 5.9L17.8 3Zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5Z"/>',
     linkedin: '<path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4V21H3V9.75Zm6.5 0h3.8v1.6h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5c0-1.2 0-2.75-1.67-2.75-1.68 0-1.94 1.3-1.94 2.66V21H9.5V9.75Z"/>',
+    tradingview: '<path d="M2 6h9v4H8.5v8h-4v-8H2V6Zm12.6 12L19 6h3l-4.4 12h-3Zm-1.6-8.2a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z"/>',
+    medium: '<path d="M7 6.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm8.6.4c1.5 0 2.7 2.3 2.7 5.1s-1.2 5.1-2.7 5.1-2.7-2.3-2.7-5.1 1.2-5.1 2.7-5.1Zm4.6.8c.5 0 1 1.9 1 4.3s-.4 4.3-1 4.3-1-1.9-1-4.3.4-4.3 1-4.3Z"/>',
+    myfxbook: '<path d="M3 3h2v16h16v2H3V3Zm4.5 12.5 3.6-4.6 3 2.4 4.7-6.2 1.6 1.2-5.9 7.8-3-2.4-2.4 3-1.6-1.2Z"/>',
+    facebook: '<path d="M13.5 21v-7.6h2.6l.4-3h-3V8.5c0-.9.3-1.5 1.5-1.5h1.6V4.3a21 21 0 0 0-2.3-.1c-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21h3.1Z"/>',
     email: '<path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1 2.3V17h16V7.3l-8 5.6-8-5.6ZM5.5 7l6.5 4.6L18.5 7h-13Z"/>',
     mql5: '<path d="M3 4h4l5 7 5-7h4v16h-3.5V9.8L12 16 6.5 9.8V20H3V4Z"/>',
     github: '<path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 2.9.8.1-.7.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.7s.8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/>'
@@ -46,6 +50,10 @@
     ["youtube", "YouTube", C.youtube],
     ["x", "X", C.x],
     ["linkedin", "LinkedIn", C.linkedin],
+    ["facebook", "Facebook", C.facebook],
+    ["tradingview", "TradingView", C.tradingview],
+    ["medium", "Medium", C.medium],
+    ["myfxbook", "Myfxbook", C.myfxbook],
     ["mql5", "MQL5", C.mql5Product],
     ["github", "GitHub", C.github],
     ["email", "Email", C.email ? "mailto:" + C.email : ""]
@@ -57,6 +65,11 @@
     }).join("");
   });
   $$("[data-mql5]").forEach(function (a) { if (C.mql5Product) a.href = C.mql5Product; });
+  // Paid EA link: if not set yet, the button scrolls to the contact form instead
+  $$("[data-mql5-2]").forEach(function (a) {
+    if (C.mql5Product2) { a.href = C.mql5Product2; }
+    else { a.removeAttribute("target"); a.href = "#connect"; a.textContent = "Ask about this EA"; a.setAttribute("data-request", "Question about Two Frame Momentum Trend"); }
+  });
 
   /* ---------- record strip ---------- */
   var tests = R.filter(function (r) { return r.pf !== null; });
@@ -83,13 +96,13 @@
       s += '<text class="tick-label" x="' + x(t) + '" y="' + (base + 38) + '" text-anchor="middle">' + t.toFixed(2) + "</text>";
     });
     s += '<line class="breakeven" x1="' + x(1) + '" x2="' + x(1) + '" y1="' + (top - 22) + '" y2="' + (base + 14) + '"/>';
-    s += '<text class="side-label" fill="#8FC1A0" x="' + (x(1) + 12) + '" y="' + (top - 10) + '">Made money</text>';
-    s += '<text class="side-label" fill="#D9A3AE" x="' + (x(1) - 12) + '" y="' + (top - 10) + '" text-anchor="end">Lost money</text>';
+    s += '<text class="side-label" fill="#7CC69A" x="' + (x(1) + 12) + '" y="' + (top - 10) + '">Made money</text>';
+    s += '<text class="side-label" fill="#E38C9E" x="' + (x(1) - 12) + '" y="' + (top - 10) + '" text-anchor="end">Lost money</text>';
     placed.forEach(function (p) {
       var cy = base - p.lane * (gap + 2), win = p.r.pf >= 1, fwd = p.r.kind === "forward";
-      var col = win ? "#8FC1A0" : "#D9A3AE";
+      var col = win ? "#7CC69A" : "#E38C9E";
       s += '<circle class="dot" tabindex="0" data-id="' + p.r.id + '" cx="' + p.cx.toFixed(1) + '" cy="' + cy + '" r="' + rad + '" ' +
-        (fwd ? 'fill="#22402F" stroke="' + col + '" stroke-width="2.5"' : 'fill="' + col + '"') + "><title>" + esc(p.r.name) + "</title></circle>";
+        (fwd ? 'fill="#0E1627" stroke="' + col + '" stroke-width="2.5"' : 'fill="' + col + '"') + "><title>" + esc(p.r.name) + "</title></circle>";
     });
     s += "</svg>";
     strip.insertAdjacentHTML("afterbegin", s);
