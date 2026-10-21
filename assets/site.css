@@ -88,11 +88,12 @@ h2.display{font-size:clamp(26px,3.3vw,38px)}
 .block-head p{margin:0}
 
 /* ---------- hero ---------- */
-.hero{position:relative;padding:84px 0 76px;overflow:hidden}
+.hero{position:relative;padding:96px 0 88px;overflow:hidden;min-height:640px}
 .hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:70%;height:140%;pointer-events:none;
   background:linear-gradient(115deg,transparent 30%,rgba(150,110,80,.10) 48%,rgba(120,100,140,.08) 58%,transparent 72%);filter:blur(30px)}
-.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);gap:56px;align-items:center}
-.hero h1{font:700 clamp(36px,5.6vw,70px)/1.06 var(--display);letter-spacing:-.01em;margin:0 0 28px;color:var(--star)}
+.hero-grid{position:relative;display:block}
+.hero-grid > div{max-width:640px}
+.hero h1{font:700 clamp(34px,5vw,62px)/1.08 var(--display);text-shadow:0 2px 24px rgba(5,8,15,.8);letter-spacing:-.01em;margin:0 0 28px;color:var(--star)}
 .hero h1 .line2{display:block;color:var(--muted)}
 .hero .lede{margin:0 0 34px}
 .actions{display:flex;flex-wrap:wrap;gap:12px}
@@ -100,8 +101,11 @@ h2.display{font-size:clamp(26px,3.3vw,38px)}
 .hero-stats div{font-size:13px;color:var(--muted)}
 .hero-stats strong{display:block;font:700 24px var(--display);color:var(--star);margin-bottom:2px}
 
-.logo-frame{position:relative;margin:0 0 0 auto;max-width:460px;width:100%;aspect-ratio:1;border-radius:8px;overflow:hidden;border:1px solid var(--line-soft);box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.02)}
-.logo-frame img{width:100%;height:100%;object-fit:cover}
+/* logo sky blended into the page: no frame, edges dissolve into the background */
+.hero-sky{position:absolute;top:0;bottom:0;right:0;width:min(64%,900px);pointer-events:none;
+  background:url(brand/hero-sky.jpg) 55% 40%/cover no-repeat;opacity:.9;
+  -webkit-mask-image:radial-gradient(ellipse 62% 60% at 58% 50%,#000 38%,rgba(0,0,0,.55) 62%,transparent 82%);
+          mask-image:radial-gradient(ellipse 62% 60% at 58% 50%,#000 38%,rgba(0,0,0,.55) 62%,transparent 82%)}
 
 /* ---------- record strip (signature) ---------- */
 .record{background:linear-gradient(180deg,rgba(14,22,39,.85),rgba(10,16,32,.85));border-block:1px solid var(--line-soft);padding:56px 0 48px}
@@ -252,7 +256,7 @@ h2.display{font-size:clamp(26px,3.3vw,38px)}
 }
 @media (max-width:960px){
   .hero-grid,.block-head,.connect-grid,.eas{grid-template-columns:1fr;gap:28px}
-  .logo-frame{max-width:380px;margin:0}
+  .hero-sky{width:100%;opacity:.45}
   .tools{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr 1fr;gap:0 24px}
   .step{padding-bottom:26px}
@@ -267,7 +271,8 @@ h2.display{font-size:clamp(26px,3.3vw,38px)}
   .navlinks a:not(.nav-cta){display:none}
   .wordmark{letter-spacing:.24em;font-size:14px}
   .hero{padding:44px 0 56px}
-  .logo-frame{max-width:100%}
+  .hero{min-height:0}
+  .hero-sky{opacity:.32;background-position:65% 30%}
   .block{padding:64px 0}
   .lede{font-size:16px}
   .steps{grid-template-columns:1fr}
