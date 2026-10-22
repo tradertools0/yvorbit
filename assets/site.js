@@ -89,6 +89,11 @@
       placed.push({ r: r, cx: cx, lane: lane });
     });
     var base = 112;
+    // brand colours come from site.css (record band uses the dark-surface shades)
+    var cs = window.getComputedStyle(strip);
+    var POS = (cs.getPropertyValue("--pos") || "").trim() || "#8FBC99";
+    var NEG = (cs.getPropertyValue("--wine-soft") || "").trim() || "#EE9A8E";
+    var HOLLOW = (cs.getPropertyValue("--hollow") || "").trim() || "#37253C";
     var s = '<svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="Profit factor of every published test. Dots left of the dashed line lost money.">';
     s += '<line class="axis" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + (base + 14) + '" y2="' + (base + 14) + '"/>';
     (W < 600 ? [0, 0.5, 1, 1.5] : [0, 0.25, 0.5, 0.75, 1, 1.25, 1.5]).forEach(function (t) {
@@ -96,13 +101,13 @@
       s += '<text class="tick-label" x="' + x(t) + '" y="' + (base + 38) + '" text-anchor="middle">' + t.toFixed(2) + "</text>";
     });
     s += '<line class="breakeven" x1="' + x(1) + '" x2="' + x(1) + '" y1="' + (top - 22) + '" y2="' + (base + 14) + '"/>';
-    s += '<text class="side-label" fill="#7CC69A" x="' + (x(1) + 12) + '" y="' + (top - 10) + '">Made money</text>';
-    s += '<text class="side-label" fill="#E38C9E" x="' + (x(1) - 12) + '" y="' + (top - 10) + '" text-anchor="end">Lost money</text>';
+    s += '<text class="side-label" fill="' + POS + '" x="' + (x(1) + 12) + '" y="' + (top - 10) + '">Made money</text>';
+    s += '<text class="side-label" fill="' + NEG + '" x="' + (x(1) - 12) + '" y="' + (top - 10) + '" text-anchor="end">Lost money</text>';
     placed.forEach(function (p) {
       var cy = base - p.lane * (gap + 2), win = p.r.pf >= 1, fwd = p.r.kind === "forward";
-      var col = win ? "#7CC69A" : "#E38C9E";
+      var col = win ? POS : NEG;
       s += '<circle class="dot" tabindex="0" data-id="' + p.r.id + '" cx="' + p.cx.toFixed(1) + '" cy="' + cy + '" r="' + rad + '" ' +
-        (fwd ? 'fill="#0E1627" stroke="' + col + '" stroke-width="2.5"' : 'fill="' + col + '"') + "><title>" + esc(p.r.name) + "</title></circle>";
+        (fwd ? 'fill="' + HOLLOW + '" stroke="' + col + '" stroke-width="2.5"' : 'fill="' + col + '"') + "><title>" + esc(p.r.name) + "</title></circle>";
     });
     s += "</svg>";
     strip.insertAdjacentHTML("afterbegin", s);
