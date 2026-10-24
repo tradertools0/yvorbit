@@ -71,15 +71,50 @@
     else { a.removeAttribute("target"); a.href = "#connect"; a.textContent = "Ask about this EA"; a.setAttribute("data-request", "Question about Two Frame Momentum Trend"); }
   });
 
+
+  /* ---------- mobile menu ---------- */
+  var menuBtn = $(".menu-toggle"), nav = $(".navlinks");
+  if (menuBtn && nav) {
+    var setMenu = function (open) {
+      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      nav.classList.toggle("open", open);
+    };
+    menuBtn.addEventListener("click", function () { setMenu(menuBtn.getAttribute("aria-expanded") !== "true"); });
+    $$("a", nav).forEach(function (a) { a.addEventListener("click", function () { setMenu(false); }); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && nav.classList.contains("open")) { setMenu(false); menuBtn.focus(); } });
+  }
+
+  /* ---------- helpers for the record ---------- */
+  var NOT_SHOWN = "Not shown on report";
+  function byId(id) { return R.filter(function (q) { return q.id === id; })[0]; }
+  function countText(r) {
+    if (r.trades !== null && r.trades !== undefined) return r.trades.toLocaleString("en-US");
+    if (r.deals) return r.deals.toLocaleString("en-US") + " deals";
+    return "—";
+  }
+  function sourceLabel(s) {
+    return s === "tester" ? "Includes the MT5 Strategy Tester results screen"
+         : s === "account" ? "Summary graphic of an account's trade log"
+         : s === "report" ? "YV Orbit summary graphic of a written trade report (the report itself is not published)"
+         : "Summary graphic made from the tester results";
+  }
+  // Re-derive net and PF from gross figures where the report shows them.
+  function arithmetic(r) {
+    if (r.gp === null || r.gp === undefined || r.gl === null || r.gl === undefined) return null;
+    var net = Math.round((r.gp + r.gl) * 100) / 100;
+    var pf = r.gl === 0 ? null : Math.round(r.gp / -r.gl * 100) / 100;
+    var ok = Math.abs(net - r.net) < 0.02 && (pf === null || Math.abs(pf - r.pf) <= 0.01);
+    return { ok: ok, net: net, pf: pf };
+  }
+
   /* ---------- record strip ---------- */
   var tests = R.filter(function (r) { return r.pf !== null; });
   var strip = $("[data-strip]");
   var tip = $(".tip");
   function drawStrip() {
     var old = strip.querySelector("svg"); if (old) old.remove();
-    var W = Math.max(320, Math.round(strip.clientWidth || 1000)), H = 170, padL = 10, padR = 10, top = 34, maxPF = 1.7;
+    var W = Math.max(320, Math.round(strip.clientWidth || 1000)), H = 170, padL = 14, padR = 14, top = 34, maxPF = 1.7;
     var x = function (pf) { return padL + (Math.min(pf, maxPF) / maxPF) * (W - padL - padR); };
-    // simple beeswarm: stack dots that would overlap
     var gap = W < 600 ? 14 : 17, rad = W < 600 ? 6 : 7;
     var placed = [];
     var sorted = tests.slice().sort(function (a, b) { return a.pf - b.pf; });
@@ -89,12 +124,11 @@
       placed.push({ r: r, cx: cx, lane: lane });
     });
     var base = 112;
-    // brand colours come from site.css (record band uses the dark-surface shades)
     var cs = window.getComputedStyle(strip);
     var POS = (cs.getPropertyValue("--pos") || "").trim() || "#8FBC99";
     var NEG = (cs.getPropertyValue("--wine-soft") || "").trim() || "#EE9A8E";
     var HOLLOW = (cs.getPropertyValue("--hollow") || "").trim() || "#37253C";
-    var s = '<svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="Profit factor of every published test. Dots left of the dashed line lost money.">';
+    var s = '<svg viewBox="0 0 ' + W + " " + H + '" role="group" aria-label="Profit factor of every published test. Dots left of the dashed line lost money. Each dot opens its report.">';
     s += '<line class="axis" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + (base + 14) + '" y2="' + (base + 14) + '"/>';
     (W < 600 ? [0, 0.5, 1, 1.5] : [0, 0.25, 0.5, 0.75, 1, 1.25, 1.5]).forEach(function (t) {
       s += '<line class="axis" x1="' + x(t) + '" x2="' + x(t) + '" y1="' + (base + 14) + '" y2="' + (base + 20) + '"/>';
@@ -106,16 +140,20 @@
     placed.forEach(function (p) {
       var cy = base - p.lane * (gap + 2), win = p.r.pf >= 1, fwd = p.r.kind === "forward";
       var col = win ? POS : NEG;
-      s += '<circle class="dot" tabindex="0" data-id="' + p.r.id + '" cx="' + p.cx.toFixed(1) + '" cy="' + cy + '" r="' + rad + '" ' +
-        (fwd ? 'fill="' + HOLLOW + '" stroke="' + col + '" stroke-width="2.5"' : 'fill="' + col + '"') + "><title>" + esc(p.r.name) + "</title></circle>";
+      var label = p.r.name + ", " + p.r.symbol + " " + p.r.tf + ", profit factor " + pfText(p.r.pf) + ", net " + money(p.r.net) + ". Open report";
+      // invisible larger hit area so the dots are easy to tap
+      s += '<circle class="hit" data-id="' + p.r.id + '" cx="' + p.cx.toFixed(1) + '" cy="' + cy + '" r="' + (gap / 2 + 1) + '"/>';
+      s += '<circle class="dot" tabindex="0" role="button" aria-label="' + esc(label) + '" data-id="' + p.r.id + '" cx="' + p.cx.toFixed(1) + '" cy="' + cy + '" r="' + rad + '" ' +
+        (fwd ? 'fill="' + HOLLOW + '" stroke="' + col + '" stroke-width="2.5"' : 'fill="' + col + '"') + "></circle>";
     });
     s += "</svg>";
     strip.insertAdjacentHTML("afterbegin", s);
 
+    var dotFor = function (id) { return strip.querySelector('.dot[data-id="' + id + '"]'); };
     var showTip = function (dot) {
-      var r = R.filter(function (q) { return q.id === dot.getAttribute("data-id"); })[0];
+      var r = byId(dot.getAttribute("data-id"));
       if (!r || !tip) return;
-      tip.innerHTML = "<strong>" + esc(r.name) + "</strong>" + r.symbol + " " + r.tf + " · PF " + pfText(r.pf) + " · " + money(r.net);
+      tip.innerHTML = "<strong>" + esc(r.name) + "</strong>" + esc(r.symbol + " " + r.tf) + " · PF " + pfText(r.pf) + " · " + money(r.net);
       var box = strip.getBoundingClientRect(), d = dot.getBoundingClientRect();
       var left = d.left - box.left + d.width / 2;
       left = Math.max(110, Math.min(box.width - 110, left));
@@ -123,13 +161,19 @@
       tip.style.top = (d.top - box.top) + "px";
       tip.style.opacity = 1;
     };
+    var hideTip = function () { if (tip) tip.style.opacity = 0; };
+    $$(".dot, .hit", strip).forEach(function (el) {
+      var id = el.getAttribute("data-id");
+      el.addEventListener("mouseenter", function () { showTip(dotFor(id)); });
+      el.addEventListener("mouseleave", hideTip);
+      el.addEventListener("click", function () { openRecord(id); });
+    });
     $$(".dot", strip).forEach(function (dot) {
-      dot.addEventListener("mouseenter", function () { showTip(dot); });
       dot.addEventListener("focus", function () { showTip(dot); });
-      dot.addEventListener("mouseleave", function () { tip.style.opacity = 0; });
-      dot.addEventListener("blur", function () { tip.style.opacity = 0; });
-      dot.addEventListener("click", function () { openRecord(dot.getAttribute("data-id")); });
-      dot.addEventListener("keydown", function (e) { if (e.key === "Enter") openRecord(dot.getAttribute("data-id")); });
+      dot.addEventListener("blur", hideTip);
+      dot.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openRecord(dot.getAttribute("data-id")); }
+      });
     });
   }
   if (strip) {
@@ -144,19 +188,27 @@
   /* ---------- summary counts ---------- */
   var nWin = tests.filter(function (r) { return r.pf >= 1; }).length;
   var nLoss = tests.length - nWin;
+  var nUpd = R.length - tests.length;
+  var nFlag = R.filter(function (r) { return r.check || (arithmetic(r) && !arithmetic(r).ok); }).length;
   var setText = function (sel, v) { $$(sel).forEach(function (el) { el.textContent = v; }); };
   setText("[data-n-tests]", tests.length);
+  setText("[data-n-entries]", R.length);
+  setText("[data-n-updates]", nUpd);
   setText("[data-n-win]", nWin);
   setText("[data-n-loss]", nLoss);
+  setText("[data-n-flag]", nFlag);
+  setText("[data-n-tester]", R.filter(function (r) { return r.source === "tester"; }).map(function (r) { return r.img; }).filter(function (v, i, a) { return a.indexOf(v) === i; }).length);
   setText("[data-n-images]", R.map(function (r) { return r.img; }).filter(function (v, i, a) { return a.indexOf(v) === i; }).length);
 
   /* ---------- ledger ---------- */
   var tbody = $("[data-ledger]");
+  var empty = $("[data-ledger-empty]");
   function pfBar(r) {
     if (r.pf === null) return '<div class="pfbar" aria-hidden="true"></div>';
     var w = Math.min(r.pf, 1.6) / 1.6 * 100;
     return '<div class="pfbar" aria-hidden="true"><span style="width:' + w.toFixed(1) + "%;background:" + (r.pf >= 1 ? "var(--green)" : "var(--wine-soft)") + '"></span></div>';
   }
+  function flagged(r) { var a = arithmetic(r); return !!(r.check || (a && !a.ok)); }
   function renderLedger(filter) {
     if (!tbody) return;
     var rows = R.filter(function (r) {
@@ -166,20 +218,23 @@
       return true;
     });
     tbody.innerHTML = rows.map(function (r) {
-      return '<tr tabindex="0" data-id="' + r.id + '">' +
-        '<td class="name"><strong>' + esc(r.name) + "</strong><span>" + r.symbol + (r.tf !== "—" ? " " + r.tf : "") + (r.period !== "—" ? " · " + esc(r.period) : "") + "</span></td>" +
+      var sub = r.symbol + (r.tf !== "—" ? " " + r.tf : "") + (r.period ? " · " + r.period : "");
+      return '<tr data-id="' + r.id + '">' +
+        '<td class="name"><button type="button" class="row-open" data-open="' + r.id + '"><strong>' + esc(r.name) + "</strong><span>" + esc(sub) + "</span>" +
+          (flagged(r) ? '<em class="flag">Data note</em>' : "") + '<span class="sr-only">. Open report ' + r.id + "</span></button></td>" +
         '<td class="kind-cell"><span class="kind ' + r.kind + '">' + kindLabel(r.kind) + "</span></td>" +
-        '<td class="num hide-s">' + (r.trades === null ? "—" : r.trades.toLocaleString("en-US")) + "</td>" +
+        '<td class="num hide-s">' + countText(r) + "</td>" +
         '<td class="num hide-m">' + (r.win === null ? "—" : r.win.toFixed(1) + "%") + "</td>" +
-        '<td class="num net ' + tone(r) + '">' + money(r.net) + "</td>" +
+        '<td class="num net ' + tone(r) + '">' + money(r.net) + '<span class="pf-inline">PF ' + pfText(r.pf) + "</span></td>" +
         '<td class="num hide-s">' + pfText(r.pf) + "</td>" +
         '<td class="pf-cell">' + pfBar(r) + "</td>" +
         "</tr>";
     }).join("");
+    if (empty) empty.hidden = rows.length > 0;
     $$("tr", tbody).forEach(function (tr) {
-      tr.addEventListener("click", function () { openRecord(tr.getAttribute("data-id")); });
-      tr.addEventListener("keydown", function (e) { if (e.key === "Enter") openRecord(tr.getAttribute("data-id")); });
+      tr.addEventListener("click", function (e) { if (!e.target.closest("button")) openRecord(tr.getAttribute("data-id")); });
     });
+    $$(".row-open", tbody).forEach(function (b) { b.addEventListener("click", function () { openRecord(b.getAttribute("data-open")); }); });
   }
   $$(".filter").forEach(function (b) {
     var f = b.getAttribute("data-filter"), n = 0;
@@ -201,79 +256,181 @@
     var seen = {};
     gallery.innerHTML = R.filter(function (r) { if (seen[r.img]) return false; seen[r.img] = 1; return true; }).map(function (r) {
       var group = R.filter(function (q) { return q.img === r.img; });
-      var title = group.length > 1 ? group.length + " tests compared" : r.name;
+      var title = r.group || (group.length > 1 ? group.length + " tests compared" : r.name);
       if (r.id.indexOf("08") === 0) title = "Retracement EA #7: two brokers";
       if (r.id.indexOf("13") === 0) title = "Prop Firm EA #1: gold and bitcoin";
       if (r.id.indexOf("15") === 0) title = "Three XRP strategies, same data";
-      var res = group.map(function (q) { return q.pf === null ? "Development update" : '<span class="' + tone(q) + '">' + money(q.net) + "</span> · PF " + pfText(q.pf); }).join("<br>");
-      return '<button class="shot" type="button" data-id="' + r.id + '"><img loading="lazy" src="assets/evidence/' + r.img + '" alt="' + esc(title) + ' report">' +
-        '<div class="cap"><span class="kind ' + r.kind + '">' + kindLabel(r.kind) + "</span><strong>" + esc(title) + '</strong><span class="meta">' + r.symbol + (r.tf !== "—" ? " " + r.tf : "") + " · " + esc(r.period) + '</span><span class="result">' + res + "</span></div></button>";
+      var res = group.map(function (q) {
+        return q.pf === null ? "Development update" : '<span class="' + tone(q) + '">' + money(q.net) + "</span> · PF " + pfText(q.pf);
+      }).join("<br>");
+      var ids = group.map(function (q) { return "#" + q.id; }).join(", ");
+      var flag = group.some(flagged) ? '<em class="flag">Data note</em>' : "";
+      var thumb = "assets/evidence/thumbs/" + r.img;
+      return '<button class="shot" type="button" data-id="' + r.id + '">' +
+        '<img loading="lazy" decoding="async" width="480" height="480" src="' + thumb + '" alt="Report image: ' + esc(title) + ", " + esc(r.symbol + (r.tf !== "—" ? " " + r.tf : "")) + '"' +
+        ' onerror="this.onerror=null;this.src=\'assets/evidence/' + r.img + '\'">' +
+        '<div class="cap"><span class="kind ' + r.kind + '">' + kindLabel(r.kind) + '</span> <span class="rid">Record ' + ids + "</span>" + flag +
+        "<strong>" + esc(title) + '</strong><span class="meta">' + esc(r.symbol + (r.tf !== "—" ? " " + r.tf : "")) + " · " + esc(r.period || "Period not shown") +
+        '</span><span class="src">' + sourceLabel(r.source) + '</span><span class="result">' + res + "</span></div></button>";
     }).join("");
     $$(".shot", gallery).forEach(function (b) { b.addEventListener("click", function () { openRecord(b.getAttribute("data-id")); }); });
   }
 
-  /* ---------- lightbox ---------- */
-  var lb = $(".lightbox"), lastFocus = null;
-  function openRecord(id) {
-    var r = R.filter(function (q) { return q.id === id; })[0];
+  /* ---------- report viewer ---------- */
+  var lb = $(".lightbox"), lastFocus = null, onIndex = !!tbody;
+  function row(label, value, help) {
+    var missing = value === null || value === undefined || value === "";
+    return "<dt>" + label + "</dt><dd" + (missing ? ' class="missing"' : "") + ">" + (missing ? esc(help || NOT_SHOWN) : value) + "</dd>";
+  }
+  function openRecord(id, fromHash) {
+    var r = byId(id);
     if (!r || !lb) return;
-    lastFocus = document.activeElement;
+    if (!lb.classList.contains("open")) lastFocus = document.activeElement;
     var src = "assets/evidence/" + r.img;
-    $("img", lb).src = src;
-    $("img", lb).alt = r.name + " report";
-    $("figcaption", lb).innerHTML =
-      '<span class="kind ' + r.kind + '">' + kindLabel(r.kind) + "</span><h3>" + esc(r.name) + "</h3>" +
-      "<dl><dt>Market</dt><dd>" + r.symbol + (r.tf !== "—" ? " " + r.tf : "") + "</dd>" +
-      "<dt>Period</dt><dd>" + esc(r.period) + "</dd>" +
-      "<dt>Trades</dt><dd>" + (r.trades === null ? "—" : r.trades.toLocaleString("en-US")) + "</dd>" +
-      "<dt>Net result</dt><dd class=\"" + tone(r) + "\">" + money(r.net) + "</dd>" +
-      "<dt>Profit factor</dt><dd>" + pfText(r.pf) + "</dd>" +
-      "<dt>Win rate</dt><dd>" + (r.win === null ? "—" : r.win.toFixed(1) + "%") + "</dd>" +
-      "<dt>Max drawdown</dt><dd>" + esc(r.dd) + "</dd></dl>" +
-      '<p class="fine">' + esc(r.note) + "</p>" +
-      '<a class="open-full" href="' + src + '" target="_blank" rel="noopener">Open full-size image</a>';
+    var img = $("img", lb), fig = $("figure", lb);
+    fig.classList.add("loading"); fig.classList.remove("failed");
+    img.onload = function () { fig.classList.remove("loading"); };
+    img.onerror = function () { fig.classList.remove("loading"); fig.classList.add("failed"); };
+    img.alt = "Original report image for record " + r.id + ": " + r.name + ", " + r.symbol + (r.tf !== "—" ? " " + r.tf : "");
+    img.src = src;
+    var a = arithmetic(r);
+    var sharedWith = R.filter(function (q) { return q.img === r.img && q.id !== r.id; });
+    var grossNote = r.pf === null ? "Not applicable to an update" : "Not shown on report";
+    var html =
+      '<p class="rec-id">Record #' + esc(r.id) + '</p><span class="kind ' + r.kind + '">' + kindLabel(r.kind) + "</span>" +
+      '<h3 id="lb-title">' + esc(r.name) + "</h3>" +
+      '<p class="src">' + sourceLabel(r.source) + (sharedWith.length ? ". Same image as record " + sharedWith.map(function (q) { return "#" + q.id; }).join(", ") : "") + ".</p>" +
+      '<h4>Result</h4><dl>' +
+        row("Net result", r.net === null ? null : '<span class="' + tone(r) + '">' + money(r.net) + "</span>", grossNote) +
+        row("Gross profit", r.gp === null || r.gp === undefined ? null : money(r.gp), grossNote) +
+        row("Gross loss", r.gl === null || r.gl === undefined ? null : money(r.gl), grossNote) +
+        row("Profit factor", r.pf === null ? null : pfText(r.pf), grossNote) +
+        row(r.deals && r.trades === null ? "Deals" : "Trades", r.trades === null && !r.deals ? null : countText(r), grossNote) +
+        row("Win rate", r.win === null ? null : r.win.toFixed(2).replace(/\.?0+$/, "") + "%", grossNote) +
+        row("Max drawdown", r.dd ? esc(r.dd) : null) +
+      "</dl>" +
+      '<h4>Test conditions</h4><dl>' +
+        row("Market", esc(r.symbol + (r.tf !== "—" ? " " + r.tf : ""))) +
+        row("Period", r.period ? esc(r.period) : null) +
+        row("Starting balance", r.deposit ? "$" + r.deposit.toLocaleString("en-US") : null) +
+        row("Lot size", r.lot ? esc(r.lot) : null) +
+        row("Modelling", r.model ? esc(r.model) : null) +
+        row("History quality", r.quality ? r.quality + "%" : null) +
+        row("Broker / data", r.broker ? esc(r.broker) : null) +
+        row("Spread and commission", null) +
+      "</dl>";
+    if (a) {
+      html += '<p class="check ' + (a.ok ? "ok" : "bad") + '">' + (a.ok
+        ? "Arithmetic check passed: gross profit minus gross loss gives the stated net, and their ratio gives the stated profit factor."
+        : "Arithmetic check failed: gross figures give " + money(a.net) + " and PF " + (a.pf === null ? "—" : a.pf.toFixed(2)) + ", not the stated " + money(r.net) + " and PF " + pfText(r.pf) + ".") + "</p>";
+    } else if (r.pf !== null) {
+      html += '<p class="check none">Arithmetic check not possible: this report does not show gross profit and gross loss.</p>';
+    }
+    if (r.check) html += '<p class="check bad">' + esc(r.check) + "</p>";
+    html += '<p class="fine">' + esc(r.note) + "</p>" +
+      '<div class="lb-actions"><a class="open-full" href="' + src + '" target="_blank" rel="noopener">Open full-size image</a>' +
+      '<button type="button" class="copy-link">Copy link to this record</button></div>' +
+      '<p class="fine copy-msg" role="status"></p>';
+    $("figcaption", lb).innerHTML = html;
+    var cp = $(".copy-link", lb);
+    cp.addEventListener("click", function () {
+      var url = location.origin + location.pathname + "#record-" + r.id;
+      var done = function (ok) { $(".copy-msg", lb).textContent = ok ? "Link copied." : "Copy this link: " + url; };
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(url).then(function () { done(true); }, function () { done(false); });
+      else done(false);
+    });
+    if (!fromHash && history.replaceState) history.replaceState(null, "", "#record-" + r.id);
     lb.classList.add("open");
     document.body.style.overflow = "hidden";
     $(".close", lb).focus();
   }
   function closeLb() {
-    if (!lb) return;
+    if (!lb || !lb.classList.contains("open")) return;
     lb.classList.remove("open");
     document.body.style.overflow = "";
-    if (lastFocus) lastFocus.focus();
+    if (history.replaceState && location.hash.indexOf("#record-") === 0) history.replaceState(null, "", location.pathname + location.search);
+    if (lastFocus && document.contains(lastFocus)) lastFocus.focus();
   }
   if (lb) {
+    lb.setAttribute("aria-labelledby", "lb-title");
+    lb.removeAttribute("aria-label");
     $(".close", lb).addEventListener("click", closeLb);
     lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && lb.classList.contains("open")) closeLb(); });
+    document.addEventListener("keydown", function (e) {
+      if (!lb.classList.contains("open")) return;
+      if (e.key === "Escape") { closeLb(); return; }
+      if (e.key === "Tab") { // keep focus inside the open report
+        var f = $$("a[href],button", lb).filter(function (el) { return el.offsetParent !== null; });
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
   }
-  if (location.hash.indexOf("#record-") === 0) openRecord(location.hash.slice(8));
+  function fromHash() {
+    if (location.hash.indexOf("#record-") !== 0) return;
+    var id = decodeURIComponent(location.hash.slice(8));
+    if (byId(id)) openRecord(id, true);
+  }
+  fromHash();
+  window.addEventListener("hashchange", fromHash);
 
-  /* ---------- tool request buttons pre-fill the form ---------- */
+  /* ---------- request buttons pre-fill the form ---------- */
   $$("[data-request]").forEach(function (a) {
     a.addEventListener("click", function () {
       var sel = $("#f-topic"); if (sel) sel.value = a.getAttribute("data-request");
     });
   });
 
-  /* ---------- contact form ---------- */
+  /* ---------- contact form ----------
+     There is no server behind this form. It hands the message to WhatsApp
+     (or the visitor's email app) and says so plainly. It never claims the
+     message was delivered. */
   var form = $("#contact-form");
   if (form) {
+    var note = $("[data-form-route]", form);
+    if (note) note.textContent = C.whatsapp
+      ? "Sending opens WhatsApp with your message filled in. Nothing is stored on this website, and the message is only sent when you press send in WhatsApp."
+      : C.email ? "Sending opens your email app with the message filled in. Nothing is stored on this website."
+      : "Direct messages are not set up yet.";
+    var busy = false;
+    var fieldErr = function (input, text) {
+      var box = input.parentNode.querySelector(".field-error");
+      input.setAttribute("aria-invalid", text ? "true" : "false");
+      if (box) box.textContent = text || "";
+    };
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      if (busy) return;
       var msg = $(".form-msg", form);
-      var name = $("#f-name").value.trim(), reply = $("#f-reply").value.trim(),
-          topic = $("#f-topic").value, body = $("#f-message").value.trim();
-      if (!name || !body) { msg.textContent = "Add your name and a message, then send again."; msg.className = "form-msg neg"; return; }
+      var nameEl = $("#f-name"), replyEl = $("#f-reply"), bodyEl = $("#f-message");
+      var name = nameEl.value.trim(), reply = replyEl.value.trim(),
+          topic = $("#f-topic").value, body = bodyEl.value.trim();
+      var bad = null;
+      fieldErr(nameEl, name ? "" : "Enter your name.");
+      if (!name) bad = bad || nameEl;
+      var replyOk = !reply || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(reply) || /^\+?[\d\s()-]{8,}$/.test(reply);
+      fieldErr(replyEl, replyOk ? "" : "Enter an email address or a phone number with country code, or leave this empty.");
+      if (!replyOk) bad = bad || replyEl;
+      fieldErr(bodyEl, body.length >= 5 ? "" : "Write a short message (at least 5 characters).");
+      if (body.length < 5) bad = bad || bodyEl;
+      if (bad) { msg.textContent = "Please fix the highlighted fields."; msg.className = "form-msg neg"; bad.focus(); return; }
+
       var text = "Hello YV Orbit,\n\nName: " + name + (reply ? "\nReply to: " + reply : "") + "\nTopic: " + topic + "\n\n" + body;
+      busy = true; setTimeout(function () { busy = false; }, 2500);
       if (C.whatsapp) {
-        window.open("https://wa.me/" + String(C.whatsapp).replace(/\D/g, "") + "?text=" + encodeURIComponent(text), "_blank", "noopener");
-        msg.textContent = "WhatsApp opened with your message. Press send there to deliver it."; msg.className = "form-msg pos";
+        var wa = "https://wa.me/" + String(C.whatsapp).replace(/\D/g, "") + "?text=" + encodeURIComponent(text);
+        window.open(wa, "_blank", "noopener");
+        msg.innerHTML = 'Your message is ready in WhatsApp. It is <strong>not sent</strong> until you press send there. If WhatsApp did not open, <a href="' + esc(wa) + '" target="_blank" rel="noopener noreferrer">open it here</a>.';
+        msg.className = "form-msg";
       } else if (C.email) {
-        location.href = "mailto:" + C.email + "?subject=" + encodeURIComponent("YV Orbit: " + topic) + "&body=" + encodeURIComponent(text);
-        msg.textContent = "Your email app opened with the message ready to send."; msg.className = "form-msg pos";
+        var mail = "mailto:" + C.email + "?subject=" + encodeURIComponent("YV Orbit: " + topic) + "&body=" + encodeURIComponent(text);
+        location.href = mail;
+        msg.innerHTML = 'Your email app should open with the message ready. It is <strong>not sent</strong> until you send it there. If nothing opened, <a href="' + esc(mail) + '">try again</a>.';
+        msg.className = "form-msg";
       } else {
-        msg.innerHTML = 'Direct messages are not set up yet. Leave feedback on the <a href="' + esc(C.mql5Product) + '" target="_blank" rel="noopener">MQL5 product page</a> for now.';
+        msg.innerHTML = 'Direct messages are not set up yet. Leave feedback on the <a href="' + esc(C.mql5Product) + '" target="_blank" rel="noopener noreferrer">MQL5 product page</a> for now.';
         msg.className = "form-msg";
       }
     });

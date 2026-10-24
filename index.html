@@ -5,14 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#F1EDE7">
 <meta name="color-scheme" content="light">
-<title>YV Orbit | Expert Advisors, trading tools and strategy research</title>
-<meta name="description" content="YV Orbit builds and tests MetaTrader 5 Expert Advisors and publishes every result, including the losing ones. Two EAs on the MQL5 Market, plus tools for auditing MQL5 code, multi-timeframe backtesting and reverse-engineering trade histories.">
+<title>YV Orbit | MT5 Expert Advisors &amp; Trading Research</title>
+<meta name="description" content="Explore MT5 Expert Advisors, transparent backtest reports and trading research tools from YV Orbit. Review test conditions and results before testing any EA.">
+<meta name="robots" content="index,follow">
 <link rel="canonical" href="https://www.yvorbit.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.yvorbit.com/">
 <meta property="og:title" content="YV Orbit | Research the market. Engineer the rules.">
 <meta property="og:description" content="MT5 Expert Advisors, trading tools and an open test record, including the losses.">
 <meta property="og:image" content="https://www.yvorbit.com/assets/brand/og-image-2026.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="YV Orbit logo with the line Research the market. Engineer the rules.">
+<meta property="og:site_name" content="YV Orbit">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"YV Orbit","url":"https://www.yvorbit.com/","logo":"https://www.yvorbit.com/assets/brand/favicon-512.png","sameAs":["https://www.tradingview.com/u/chavdakrunal/","https://x.com/krunalchav777","https://www.instagram.com/krunalchav777/","https://www.threads.net/@krunalchav777","https://github.com/tradertools0/yvorbit"]}</script>
 <link rel="icon" href="assets/brand/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
 <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
@@ -23,21 +30,24 @@
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+<a class="skip" href="#top">Skip to content</a>
 
 <header class="site-header">
   <div class="wrap nav">
     <a class="logo" href="#top" aria-label="YV Orbit home"><svg viewBox="32 22 600 156" aria-hidden="true"><path fill="currentColor" d="M32 24H69.3L100 75.2L130.7 24H168L100 137.3Z"/><path fill="currentColor" d="M84 126.7L100 153.3L116 126.7V176H84Z"/><g transform="translate(216 72.6) scale(1.368)"><path fill="currentColor" d="M0 0H9L19 16L29 0H38L23 24V40H15V24Z"/><path fill="currentColor" d="M50 0H59L67.5 26.2L76 0H85L72 40H63Z"/><g fill="none" stroke="currentColor" stroke-width="8" transform="translate(12 0)"><circle cx="124" cy="20" r="16"/><path d="M160 40V4H174A10 10 0 0 1 174 24H160M172 24L184 40"/><path d="M202 40V4H215A8 8 0 0 1 215 20H202M215 20H217A8 8 0 0 1 217 36H202"/><path d="M245 0V40"/><path d="M259 4H291M275 4V40"/></g></g></svg></a>
-    <nav class="navlinks" aria-label="Main">
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav"><svg class="i-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Menu</button>
+    <nav class="navlinks" id="main-nav" aria-label="Main">
       <a href="#results">Results</a>
       <a href="#ea">EAs</a>
       <a href="#tools">Tools</a>
       <a href="#method">Method</a>
+      <a href="about.html">About</a>
       <a class="nav-cta" href="#connect">Connect</a>
     </nav>
   </div>
 </header>
 
-<main id="top">
+<main id="top" tabindex="-1">
 
   <!-- HERO -->
   <section class="hero">
@@ -51,9 +61,9 @@
           <a class="btn" href="#ea">Our EAs on MQL5</a>
         </div>
         <div class="hero-stats">
-          <div><strong data-n-tests>18</strong>Tests on the record</div>
+          <div><strong data-n-tests>21</strong>Tests on the record</div>
           <div><strong>2</strong>EAs on the MQL5 Market</div>
-          <div><strong>3</strong>In-house tools</div>
+          <div><strong>4</strong>In-house tools, none public yet</div>
         </div>
       </div>
       <div class="hero-mark" aria-hidden="true"><svg viewBox="32 24 136 152"><path d="M32 24H69.3L100 75.2L130.7 24H168L100 137.3Z"/><path d="M84 126.7L100 153.3L116 126.7V176H84Z"/></svg></div>
@@ -64,8 +74,8 @@
   <section class="record" aria-labelledby="record-title">
     <div class="wrap">
       <div class="record-top">
-        <h2 id="record-title"><span data-n-loss>10</span> of <span data-n-tests>18</span> published tests lost money. They are all here.</h2>
-        <p>Each dot is one test, placed by its profit factor. Hollow dots are forward tests on a live chart. Select a dot to open its report.</p>
+        <h2 id="record-title"><span data-n-loss>12</span> of <span data-n-tests>21</span> published tests lost money. They are all here.</h2>
+        <p>Each dot is one test, placed by its profit factor. Hollow dots are forward tests. Select a dot to open its report.</p>
       </div>
       <div class="strip" data-strip><div class="tip" role="status"></div></div>
       <div class="legend">
@@ -81,11 +91,11 @@
     <div class="wrap">
       <div class="block-head">
         <h2 class="display">The test record</h2>
-        <p class="lede">Numbers are copied from each Strategy Tester or account report. Most tests start from a $1,000 deposit with a fixed 0.01 lot. Select any row to see the original image.</p>
+        <p class="lede"><span data-n-entries>22</span> entries: <span data-n-tests>21</span> tests with results and <span data-n-updates>1</span> development update. Every number is copied from a published report image or a YV Orbit trade report. Select any row to see the image, the test conditions it shows, and what it leaves out.</p>
       </div>
 
       <div class="filters" role="group" aria-label="Filter tests">
-        <button class="filter" type="button" data-filter="all" aria-pressed="true">All<span class="count"></span></button>
+        <button class="filter" type="button" data-filter="all" aria-pressed="true">All entries<span class="count"></span></button>
         <button class="filter" type="button" data-filter="win" aria-pressed="false">Above breakeven<span class="count"></span></button>
         <button class="filter" type="button" data-filter="loss" aria-pressed="false">Below breakeven<span class="count"></span></button>
         <button class="filter" type="button" data-filter="forward" aria-pressed="false">Forward tests and updates<span class="count"></span></button>
@@ -105,8 +115,27 @@
         </thead>
         <tbody data-ledger></tbody>
       </table>
+      <p class="ledger-empty" data-ledger-empty hidden>No entries match this filter.</p>
 
-      <p class="fine ledger-note">PF is profit factor: gross profit divided by gross loss. Above 1.00 means the test made money. Backtests show how rules behaved on past data under specific spreads and settings. They do not predict future results. <a href="evidence.html">Browse all <span data-n-images>15</span> report images</a>.</p>
+      <p class="fine ledger-note">PF is profit factor: gross profit divided by gross loss. Above 1.00 means the test made money. <a href="evidence.html">Browse all <span data-n-images>16</span> report images</a>.</p>
+
+      <div class="read-guide" id="how-to-read">
+        <div>
+          <h3>Where the numbers come from</h3>
+          <p>Each entry is copied from one published report image. <span data-n-tester>4</span> of the images include the MT5 Strategy Tester results screen itself. The rest are summary graphics made from tester results, account trade logs or a written YV Orbit trade report. The raw tester exports and account statements are not published yet.</p>
+          <p>Nothing on this site has been independently audited.</p>
+        </div>
+        <div>
+          <h3>What is checked, and what is missing</h3>
+          <p>Where a report shows gross profit and gross loss, the site recalculates net result and profit factor. <span data-n-flag>6</span> entries carry a data note: the image does not add up, contradicts itself, or leaves a detail unconfirmed.</p>
+          <p>When a report does not show a value, such as spread, commission or test dates, the record says so instead of filling in a default.</p>
+        </div>
+        <div>
+          <h3>What a backtest cannot tell you</h3>
+          <p>A backtest shows how fixed rules behaved on past prices under one broker's data and settings. Live trading adds slippage, changing spreads, requotes and outages. Past results do not predict future ones. A one-day or one-week forward test is too short to judge an EA.</p>
+          <p><a href="risk.html">Read the full risk disclosure</a>.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -115,7 +144,7 @@
     <div class="wrap">
       <div class="block-head">
         <h2 class="display">Our EAs on the MQL5 Market</h2>
-        <p class="lede">Both passed MQL5 Market validation. One is free so traders can test our work on their own broker. The other is our first paid release.</p>
+        <p class="lede">Both passed MQL5 Market validation. One is free so traders can test our work on their own broker. The other is our first paid release. Validation checks that an EA runs without technical errors; it does not test whether the EA is profitable.</p>
       </div>
 
       <div class="eas">
@@ -131,6 +160,7 @@
             <div><dt>Safety checks</dt><dd>Margin, stop levels, lot step</dd></div>
             <div><dt>Price</dt><dd>Free</dd></div>
           </dl>
+          <p class="card-note">Details as listed on the MQL5 Market in October 2026. The MQL5 product page is the official source for the current version and price.</p>
           <div class="actions">
             <a class="btn solid" href="https://www.mql5.com/en/market/product/200698" data-mql5 target="_blank" rel="noopener noreferrer">Download from MQL5</a>
             <a class="btn" href="#connect" data-request="Feedback on Consecutive Candle Reversal">Send feedback</a>
@@ -149,6 +179,7 @@
             <div><dt>Market validation</dt><dd>Passed</dd></div>
             <div><dt>Price</dt><dd>See MQL5 page</dd></div>
           </dl>
+          <p class="card-note">The MQL5 product page is the official source for the current version, price and test results.</p>
           <div class="actions">
             <a class="btn solid" href="#connect" data-mql5-2 target="_blank" rel="noopener noreferrer">View on MQL5</a>
             <a class="btn" href="#connect" data-request="Question about Two Frame Momentum Trend">Ask a question</a>
@@ -163,7 +194,7 @@
     <div class="wrap">
       <div class="block-head">
         <h2 class="display">Tools we built for our own work</h2>
-        <p class="lede">Most EA problems are found too late, after hours of backtesting. These three tools move the checks earlier and make testing repeatable.</p>
+        <p class="lede">Most EA problems are found too late, after hours of backtesting. These tools move the checks earlier and make testing repeatable. None of them is sold or publicly downloadable yet. Three are in private use with access given case by case; YV Strategy Audit is still being built.</p>
       </div>
 
       <div class="tools">
@@ -171,7 +202,7 @@
           <span class="platform">Runs in the browser</span>
           <h3>YV EA Audit</h3>
           <p>Upload or paste an MQL5 Expert Advisor and get a plain report on what is wrong in the code before you spend time testing it.</p>
-          <a class="tool-shot" href="assets/tools/yv-ea-audit.jpg" target="_blank" rel="noopener"><img loading="lazy" src="assets/tools/yv-ea-audit.jpg" width="1344" height="642" alt="YV EA Audit screen with the MQL5 source box and the audit steps"></a>
+          <a class="tool-shot" href="assets/tools/yv-ea-audit.jpg" target="_blank" rel="noopener"><img loading="lazy" src="assets/tools/yv-ea-audit.jpg" width="1344" height="642" alt="YV EA Audit screen with the MQL5 source box and the audit steps"><span class="sr-only"> (opens full-size screenshot)</span></a>
           <ul>
             <li>Finds missing margin and stop-level checks, unchecked indicator reads, risky loops and state bugs</li>
             <li>Checks each indicator against its original source instead of trusting its name</li>
@@ -183,7 +214,8 @@
             <div class="verdicts">
               <span class="v-ok">Exact</span><span class="v-ok">Standard</span><span class="v-mid">Modified</span><span class="v-mid">Variant</span><span class="v-bad">Incorrect</span><span class="v-bad">Unverified</span>
             </div>
-            <div class="status"><span>In private use</span><a class="btn" href="#connect" data-request="Access to YV EA Audit">Request access</a></div>
+            <dl class="tool-facts"><dt>For</dt><dd>MQL5 EA developers and testers</dd><dt>Needs</dt><dd>Web browser</dd><dt>Access</dt><dd>Restricted, on request. Pricing not announced.</dd><dt>Limits</dt><dd>A code review only. A clean audit does not mean an EA is profitable.</dd></dl>
+            <div class="status"><span class="status-badge">In private use</span><a class="btn" href="#connect" data-request="Access to YV EA Audit">Request access</a></div>
           </div>
         </article>
 
@@ -191,7 +223,7 @@
           <span class="platform">Windows app, no setup needed</span>
           <h3>YV Multi-Timeframe Tester</h3>
           <p>Choose an EA once and run it through the real MT5 Strategy Tester on every timeframe with one click.</p>
-          <a class="tool-shot" href="assets/tools/yv-multitf-tester.jpg" target="_blank" rel="noopener"><img loading="lazy" src="assets/tools/yv-multitf-tester.jpg" width="1271" height="622" alt="YV Multi-Timeframe Tester window with MT5 terminal, EA, backtest settings and timeframe selection"></a>
+          <a class="tool-shot" href="assets/tools/yv-multitf-tester.jpg" target="_blank" rel="noopener"><img loading="lazy" src="assets/tools/yv-multitf-tester.jpg" width="1271" height="622" alt="YV Multi-Timeframe Tester window with MT5 terminal, EA, backtest settings and timeframe selection"><span class="sr-only"> (opens full-size screenshot)</span></a>
           <ul>
             <li>Drives MetaTrader 5's own tester, so results match what you would get by hand</li>
             <li>Never changes the EA or replaces MT5's backtest engine</li>
@@ -204,7 +236,8 @@
               <span class="tf">M1</span><span class="tf">M3</span><span class="tf">M5</span><span class="tf">M15</span><span class="tf">more</span>
               <span class="arrow" aria-hidden="true">&rarr;</span><span class="out">Master report</span>
             </div>
-            <div class="status"><span>In private use</span><a class="btn" href="#connect" data-request="Access to YV Multi-Timeframe Tester">Request access</a></div>
+            <dl class="tool-facts"><dt>For</dt><dd>Anyone backtesting MT5 EAs</dd><dt>Needs</dt><dd>Windows with MetaTrader 5 installed</dd><dt>Access</dt><dd>Restricted, on request. Pricing not announced.</dd><dt>Limits</dt><dd>Uses MT5&#8217;s own tester, so results are only as good as the tester data and settings.</dd></dl>
+            <div class="status"><span class="status-badge">In private use</span><a class="btn" href="#connect" data-request="Access to YV Multi-Timeframe Tester">Request access</a></div>
           </div>
         </article>
 
@@ -212,7 +245,7 @@
           <span class="platform">Windows app, no setup needed</span>
           <h3>YV Reverse Engine</h3>
           <p>Load the MT5 trade history of any EA and get a forensic report on how it actually trades, plus a replica EA you can test yourself.</p>
-          <a class="tool-shot" href="assets/tools/yv-reverse-engine.jpg" target="_blank" rel="noopener"><img loading="lazy" src="assets/tools/yv-reverse-engine.jpg" width="1280" height="640" alt="YV Reverse Engine window with a loaded trade history and the forensic report" onerror="this.parentNode.classList.add('empty');this.parentNode.removeAttribute('href');this.parentNode.textContent='Screenshot coming soon'"></a>
+          <div class="tool-shot empty" role="img" aria-label="No screenshot published yet">Screenshot not published yet</div>
           <ul>
             <li>Decodes entries, exits, lot sizing and position stacking from the history alone</li>
             <li>Handles grid, basket, martingale and single-position EAs</li>
@@ -225,7 +258,28 @@
               <span class="tf">Trade history</span><span class="tf">+ M1 data</span>
               <span class="arrow" aria-hidden="true">&rarr;</span><span class="out">Report</span><span class="out">Replica EA</span>
             </div>
-            <div class="status"><span>In private use</span><a class="btn" href="#connect" data-request="Access to YV Reverse Engine">Request access</a></div>
+            <dl class="tool-facts"><dt>For</dt><dd>Traders studying how a third-party EA behaves</dd><dt>Needs</dt><dd>Windows; needs an MT5 trade history export</dd><dt>Access</dt><dd>Restricted, on request. Pricing not announced.</dd><dt>Limits</dt><dd>A replica built from trade history approximates the original EA; it is not its source code.</dd></dl>
+            <div class="status"><span class="status-badge">In private use</span><a class="btn" href="#connect" data-request="Access to YV Reverse Engine">Request access</a></div>
+          </div>
+        </article>
+        <article class="tool">
+          <span class="platform">Runs in the browser</span>
+          <h3>YV Strategy Audit</h3>
+          <p>Checks a strategy's written rules, its Pine Script or MQL5 code and the broker specification for missing, unclear or conflicting details, before anyone codes or tests it.</p>
+          <div class="tool-shot empty" role="img" aria-label="No screenshot published yet">Screenshot not published yet</div>
+          <ul>
+            <li>Flags rules that are missing, ambiguous or contradictory, such as an undefined stop-loss method or session hours</li>
+            <li>Compares the written specification with what the MQL5 code actually does</li>
+            <li>Every finding cites its evidence: the code lines, form field or sentence it came from</li>
+            <li>Audit only: it never edits, generates or optimises trading code</li>
+          </ul>
+          <div class="demo">
+            <div class="demo-label">Each requirement gets one status</div>
+            <div class="verdicts">
+              <span class="v-ok">Verified</span><span class="v-mid">Partly specified</span><span class="v-mid">Ambiguous</span><span class="v-bad">Missing</span><span class="v-bad">Different</span><span class="v-mid">Review required</span>
+            </div>
+            <dl class="tool-facts"><dt>For</dt><dd>Traders and developers about to code a strategy</dd><dt>Needs</dt><dd>Web browser</dd><dt>Access</dt><dd>Not available yet. Pricing not announced.</dd><dt>Limits</dt><dd>Checks the specification, not whether the strategy makes money. Pine-to-MQL5 replica checks are not built yet.</dd></dl>
+            <div class="status"><span class="status-badge">In development</span><a class="btn" href="#connect" data-request="Question about YV Strategy Audit">Ask about it</a></div>
           </div>
         </article>
       </div>
@@ -252,17 +306,17 @@
   <section class="connect" id="connect">
     <div class="wrap connect-grid">
       <div>
-        <h2 class="display">Follow the work or get in touch</h2>
-        <p class="lede">New tests, EA updates and tool releases are posted on these channels first. Questions about our EAs, the tools or a strategy you want tested are welcome.</p>
+        <h2 class="display" id="contact">Follow the work or get in touch</h2>
+        <p class="lede">New tests, EA updates and tool releases are posted on these channels first. Questions about our EAs, the tools or a strategy you want tested are welcome. Access requests for the tools are answered personally; there is no automatic sign-up.</p>
         <div class="socials" data-socials></div>
       </div>
 
       <form class="form" id="contact-form" novalidate>
         <h3>Send a message</h3>
-        <p>Tell us what you need and how to reach you.</p>
+        <p>Tell us what you need and how to reach you. Fields marked * are required.</p>
         <div class="form-row">
-          <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
-          <div class="field"><label for="f-reply">Email or WhatsApp</label><input id="f-reply" name="reply" autocomplete="email"></div>
+          <div class="field"><label for="f-name">Name *</label><input type="text" id="f-name" name="name" autocomplete="name" required aria-describedby="e-name"><span class="field-error" id="e-name" aria-live="polite"></span></div>
+          <div class="field"><label for="f-reply">Email or WhatsApp (optional)</label><input type="text" id="f-reply" name="reply" autocomplete="email" inputmode="email" aria-describedby="e-reply"><span class="field-error" id="e-reply" aria-live="polite"></span></div>
         </div>
         <div class="field">
           <label for="f-topic">Topic</label>
@@ -272,14 +326,17 @@
             <option>Access to YV EA Audit</option>
             <option>Access to YV Multi-Timeframe Tester</option>
             <option>Access to YV Reverse Engine</option>
+            <option>Question about YV Strategy Audit</option>
             <option>Custom EA or strategy testing</option>
             <option>Broker or IB collaboration</option>
             <option>Something else</option>
           </select>
         </div>
-        <div class="field"><label for="f-message">Message</label><textarea id="f-message" name="message" required></textarea></div>
+        <div class="field"><label for="f-message">Message *</label><textarea id="f-message" name="message" required aria-describedby="e-message"></textarea><span class="field-error" id="e-message" aria-live="polite"></span></div>
         <button class="btn solid" type="submit">Send message</button>
-        <p class="form-msg" role="status"></p>
+        <p class="form-route" data-form-route></p>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+        <p class="form-route">See the <a href="privacy.html">privacy notice</a> for how messages are handled.</p>
       </form>
     </div>
   </section>
@@ -288,10 +345,17 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-row">
-      <a class="logo" href="#top"><svg viewBox="32 22 600 156" aria-hidden="true"><path fill="currentColor" d="M32 24H69.3L100 75.2L130.7 24H168L100 137.3Z"/><path fill="currentColor" d="M84 126.7L100 153.3L116 126.7V176H84Z"/><g transform="translate(216 72.6) scale(1.368)"><path fill="currentColor" d="M0 0H9L19 16L29 0H38L23 24V40H15V24Z"/><path fill="currentColor" d="M50 0H59L67.5 26.2L76 0H85L72 40H63Z"/><g fill="none" stroke="currentColor" stroke-width="8" transform="translate(12 0)"><circle cx="124" cy="20" r="16"/><path d="M160 40V4H174A10 10 0 0 1 174 24H160M172 24L184 40"/><path d="M202 40V4H215A8 8 0 0 1 215 20H202M215 20H217A8 8 0 0 1 217 36H202"/><path d="M245 0V40"/><path d="M259 4H291M275 4V40"/></g></g></svg></a>
+      <a class="logo" href="#top" aria-label="YV Orbit, back to top"><svg viewBox="32 22 600 156" aria-hidden="true"><path fill="currentColor" d="M32 24H69.3L100 75.2L130.7 24H168L100 137.3Z"/><path fill="currentColor" d="M84 126.7L100 153.3L116 126.7V176H84Z"/><g transform="translate(216 72.6) scale(1.368)"><path fill="currentColor" d="M0 0H9L19 16L29 0H38L23 24V40H15V24Z"/><path fill="currentColor" d="M50 0H59L67.5 26.2L76 0H85L72 40H63Z"/><g fill="none" stroke="currentColor" stroke-width="8" transform="translate(12 0)"><circle cx="124" cy="20" r="16"/><path d="M160 40V4H174A10 10 0 0 1 174 24H160M172 24L184 40"/><path d="M202 40V4H215A8 8 0 0 1 215 20H202M215 20H217A8 8 0 0 1 217 36H202"/><path d="M245 0V40"/><path d="M259 4H291M275 4V40"/></g></g></svg></a>
       <span>© <span data-year>2026</span> YV Orbit. yvorbit.com</span>
     </div>
-    <p class="risk">Trading leveraged products such as forex, CFDs, metals and crypto carries a high risk of losing money. Backtests, forward tests and reports on this site describe past behaviour under specific settings and are shared for research and education. They are not investment advice and do not guarantee future results. Test any EA on a demo account before using it live.</p>
+    <ul class="footer-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="evidence.html">Report library</a></li>
+      <li><a href="#connect">Contact</a></li>
+      <li><a href="risk.html">Risk disclosure</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+    <p class="risk">Trading leveraged products such as forex, CFDs, metals and crypto carries a high risk of losing money. Backtests, forward tests and reports on this site describe past behaviour under specific settings and are shared for research and education. They are not investment advice and do not guarantee future results. Test any EA on a demo account before using it live. <a href="risk.html" style="color:var(--ivory)">Full risk disclosure</a>.</p>
   </div>
 </footer>
 

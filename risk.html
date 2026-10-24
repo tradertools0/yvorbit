@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F1EDE7">
+<meta name="color-scheme" content="light">
+<title>Risk Disclosure | YV Orbit</title>
+<meta name="description" content="The risks of leveraged and automated trading, and the limits of backtests and forward tests published on YV Orbit.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://www.yvorbit.com/risk.html">
+<meta property="og:url" content="https://www.yvorbit.com/risk.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Risk Disclosure | YV Orbit">
+<meta property="og:description" content="The risks of leveraged and automated trading, and the limits of backtests and forward tests published on YV Orbit.">
+<meta property="og:image" content="https://www.yvorbit.com/assets/brand/og-image-2026.jpg">
+<meta property="og:site_name" content="YV Orbit">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/brand/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#top">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="index.html" aria-label="YV Orbit home"><svg viewBox="32 22 600 156" aria-hidden="true"><path fill="currentColor" d="M32 24H69.3L100 75.2L130.7 24H168L100 137.3Z"/><path fill="currentColor" d="M84 126.7L100 153.3L116 126.7V176H84Z"/><g transform="translate(216 72.6) scale(1.368)"><path fill="currentColor" d="M0 0H9L19 16L29 0H38L23 24V40H15V24Z"/><path fill="currentColor" d="M50 0H59L67.5 26.2L76 0H85L72 40H63Z"/><g fill="none" stroke="currentColor" stroke-width="8" transform="translate(12 0)"><circle cx="124" cy="20" r="16"/><path d="M160 40V4H174A10 10 0 0 1 174 24H160M172 24L184 40"/><path d="M202 40V4H215A8 8 0 0 1 215 20H202M215 20H217A8 8 0 0 1 217 36H202"/><path d="M245 0V40"/><path d="M259 4H291M275 4V40"/></g></g></svg></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav"><svg class="i-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Menu</button>
+    <nav class="navlinks" id="main-nav" aria-label="Main">
+      <a href="index.html#results">Results</a>
+      <a href="index.html#ea">EAs</a>
+      <a href="index.html#tools">Tools</a>
+      <a href="index.html#method">Method</a>
+      <a href="about.html">About</a>
+      <a class="nav-cta" href="index.html#connect">Connect</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top" tabindex="-1" class="page">
+  <div class="wrap">
+    <p class="kicker">Risk disclosure</p>
+    <h1>Risk disclosure</h1>
+    <p class="lede">Trading with Expert Advisors can lose money quickly, including money you did not plan to risk. Read this before using any EA or relying on any result shown on this site.</p>
+
+    <div class="callout"><p style="margin:0">Most of the strategies in the YV Orbit test record lost money in testing. Any EA, including ones that tested well, can lose money when it trades live.</p></div>
+
+    <h2>Leveraged products</h2>
+    <p>Forex, CFDs, metals such as gold, and crypto CFDs are usually traded on margin. Leverage magnifies losses as well as gains. A small price move against a position can cost more than the margin put up, and on some accounts more than the account balance.</p>
+
+    <h2>Automated trading</h2>
+    <ul>
+      <li>An EA follows its rules regardless of news, holidays, thin markets or sudden volatility.</li>
+      <li>Code can contain errors. Passing MQL5 Market validation or a code audit shows that an EA runs; it does not show that it makes money.</li>
+      <li>Losses can come from your setup rather than the strategy: a disconnected terminal, a VPS outage, wrong inputs, the wrong symbol name or a broker changing contract specifications.</li>
+      <li>Grid, martingale and averaging systems can show smooth results for long periods and then lose a large part of the account in a single move.</li>
+    </ul>
+
+    <h2>What backtests cannot show</h2>
+    <ul>
+      <li>A backtest replays fixed rules on past prices from one broker's data. Different brokers' data gives different results, as the record shows.</li>
+      <li>Strategy Tester results depend on the modelling method, history quality, and the spread and commission settings used. Many report images on this site do not state all of these.</li>
+      <li>Rules tuned until they look good on past data often fail on new data. This is called overfitting.</li>
+      <li>Past results, simulated or real, do not predict future results.</li>
+    </ul>
+
+    <h2>Live execution is different</h2>
+    <p>In live trading, orders can fill at worse prices (slippage), spreads widen around news and market opens, orders can be rejected or requoted, and execution speed varies by broker, server and connection. A strategy that is barely profitable in a backtest can lose money once these costs are real.</p>
+
+    <h2>Short forward tests</h2>
+    <p>A forward test of one day or one week shows how an EA behaved in that period only. It is far too short to judge whether a strategy has an edge.</p>
+
+    <h2>Not advice</h2>
+    <p>Everything on this site is shared for research and education. It is not investment, financial, legal or tax advice, and it does not take your situation into account. YV Orbit is not a regulated financial firm.</p>
+
+    <h2>Local rules</h2>
+    <p>In some countries, including India, residents may be restricted from trading forex or CFDs with overseas brokers. Check the rules that apply where you live before opening an account.</p>
+
+    <h2>Before you use any EA</h2>
+    <ul>
+      <li>Test it on a demo account with your own broker first, for long enough to see different market conditions.</li>
+      <li>Use only money you can afford to lose.</li>
+      <li>Check the EA's inputs, lot size and maximum risk before you attach it to a live chart.</li>
+    </ul>
+    <p class="updated">Last updated 24 October 2026</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-row">
+      <a class="logo" href="index.html" aria-label="YV Orbit home"><svg viewBox="32 22 600 156" aria-hidden="true"><path fill="currentColor" d="M32 24H69.3L100 75.2L130.7 24H168L100 137.3Z"/><path fill="currentColor" d="M84 126.7L100 153.3L116 126.7V176H84Z"/><g transform="translate(216 72.6) scale(1.368)"><path fill="currentColor" d="M0 0H9L19 16L29 0H38L23 24V40H15V24Z"/><path fill="currentColor" d="M50 0H59L67.5 26.2L76 0H85L72 40H63Z"/><g fill="none" stroke="currentColor" stroke-width="8" transform="translate(12 0)"><circle cx="124" cy="20" r="16"/><path d="M160 40V4H174A10 10 0 0 1 174 24H160M172 24L184 40"/><path d="M202 40V4H215A8 8 0 0 1 215 20H202M215 20H217A8 8 0 0 1 217 36H202"/><path d="M245 0V40"/><path d="M259 4H291M275 4V40"/></g></g></svg></a>
+      <span>© <span data-year>2026</span> YV Orbit. yvorbit.com</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#results">Test record</a></li>
+      <li><a href="index.html#connect">Contact</a></li>
+      <li><a href="risk.html">Risk disclosure</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+    <p class="risk">Trading leveraged products such as forex, CFDs, metals and crypto carries a high risk of losing money. These reports describe past behaviour under specific settings and are shared for research and education. They are not investment advice and do not guarantee future results. <a href="risk.html" style="color:var(--ivory)">Full risk disclosure</a>.</p>
+  </div>
+</footer>
+
+<script src="assets/config.js"></script>
+<script src="assets/records.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
