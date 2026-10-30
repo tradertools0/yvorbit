@@ -107,7 +107,7 @@ window.YV_RECORDS = [
     kind: "backtest", source: "tester", period: "20+ months (dates not shown)",
     trades: 745, net: 2167.37, gp: 10071.81, gl: -7904.44, pf: 1.27, win: 69.80, dd: "66.73% (balance)",
     deposit: 1000, lot: null, model: null, quality: 88, broker: "Vantage Markets data",
-    note: "Largest net result in the record, with the deepest drawdown among profitable tests." },
+    note: "Deepest drawdown among the profitable tests on the record." },
 
   { id: "12", img: "evidence-12.jpg", name: "Protection and filter upgrade", symbol: "XAUUSD", tf: "—",
     kind: "update", source: "graphic", period: "1-month observation, posted 30 May 2025",
@@ -174,5 +174,20 @@ window.YV_RECORDS = [
     trades: 5, net: -74.38, gp: 21.85, gl: null, pf: 0.23, win: 40, dd: "6.78% ($74.38)",
     deposit: 1096.34, lot: "0.01", model: null, quality: null, broker: "XM demo account",
     note: "Three losing buys wiped out two winning sells. Two take-profit fills slipped on news and cost $22.25. Two positions open at the weekend are not included.",
-    check: "H1 is inferred from entry times landing on the hour; the timeframe was not confirmed in the account history." }
+    check: "H1 is inferred from entry times landing on the hour; the timeframe was not confirmed in the account history." },
+  /* ---- added 30 Oct 2026 from MT5 Strategy Tester screenshots taken 25 Oct 2026 ----
+     Numbers copied from the Backtest tab. Account details and the EA input line are
+     hidden in the published original for privacy. */
+
+  { id: "17", img: "evidence-17.jpg", name: "QQE Signals Combo EA v1.5", symbol: "XAUUSD", tf: "M5",
+    kind: "backtest", source: "tester", period: null,
+    trades: 1100, net: 1760.08, gp: 11698.90, gl: -9938.82, pf: 1.18, win: 34.91, dd: "24.99% ($471.08, equity)",
+    deposit: 1000, lot: null, model: null, quality: 89, broker: "Vantage Markets data",
+    note: "Low win rate carried by an average win (30.47) about twice the average loss (13.88). Screenshot taken 25 Oct 2026; test dates not shown." },
+
+  { id: "18", img: "evidence-18.jpg", name: "First-30 Breakout Carry v2", symbol: "GOLD", tf: "H4",
+    kind: "backtest", source: "tester", period: null,
+    trades: 655, net: 5571.97, gp: 14802.20, gl: -9230.23, pf: 1.60, win: 38.17, dd: "40.15% ($1,056.81, equity relative)",
+    deposit: 1000, lot: null, model: null, quality: 99, broker: "XM demo data (XMGlobal-MT5 9)",
+    note: "Largest net result on the record so far, with a 40.15% relative equity drawdown. Screenshot taken 25 Oct 2026; test dates not shown." }
 ];

@@ -278,6 +278,7 @@
 
   /* ---------- report viewer ---------- */
   var lb = $(".lightbox"), lastFocus = null, onIndex = !!tbody;
+  var REDRAWN = /^evidence-(0[1-9]|1[0-5]|1[78])\.jpg$/; /* images redrawn in YV Orbit style; originals in assets/evidence/original/ */
   function row(label, value, help) {
     var missing = value === null || value === undefined || value === "";
     return "<dt>" + label + "</dt><dd" + (missing ? ' class="missing"' : "") + ">" + (missing ? esc(help || NOT_SHOWN) : value) + "</dd>";
@@ -291,7 +292,7 @@
     fig.classList.add("loading"); fig.classList.remove("failed");
     img.onload = function () { fig.classList.remove("loading"); };
     img.onerror = function () { fig.classList.remove("loading"); fig.classList.add("failed"); };
-    img.alt = "Original report image for record " + r.id + ": " + r.name + ", " + r.symbol + (r.tf !== "—" ? " " + r.tf : "");
+    img.alt = "Report image for record " + r.id + ": " + r.name + ", " + r.symbol + (r.tf !== "—" ? " " + r.tf : "");
     img.src = src;
     var a = arithmetic(r);
     var sharedWith = R.filter(function (q) { return q.img === r.img && q.id !== r.id; });
@@ -328,7 +329,9 @@
     }
     if (r.check) html += '<p class="check bad">' + esc(r.check) + "</p>";
     html += '<p class="fine">' + esc(r.note) + "</p>" +
+      (REDRAWN.test(r.img) ? '<p class="fine">This image was redrawn in the YV Orbit style on 30 October 2026. Every number is copied unchanged from the original report image, which stays published below.</p>' : "") +
       '<div class="lb-actions"><a class="open-full" href="' + src + '" target="_blank" rel="noopener">Open full-size image</a>' +
+      (REDRAWN.test(r.img) ? '<a class="open-full" href="assets/evidence/original/' + r.img + '" target="_blank" rel="noopener">Open original image</a>' : "") +
       '<button type="button" class="copy-link">Copy link to this record</button></div>' +
       '<p class="fine copy-msg" role="status"></p>';
     $("figcaption", lb).innerHTML = html;

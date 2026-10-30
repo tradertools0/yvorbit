@@ -74,6 +74,24 @@ The project is part of an ongoing development journey focused on practical imple
 
 ---
 
+## In-House Tools
+
+Full details: [yvorbit.com/tools.html](https://www.yvorbit.com/tools.html)
+
+| Tool | What it does | Status |
+|---|---|---|
+| YV EA Audit | Reviews MQL5 EA code and checks indicators against their source | In private use |
+| YV Multi-Timeframe Tester | Runs one EA through the MT5 Strategy Tester on every timeframe | In private use |
+| YV Reverse Engine | Decodes an EA's trade history into a report and a replica EA | In private use |
+| YV Combination Backtester | Backtests one EA across combinations of its inputs with the MT5 optimizer | In development |
+| YV Robustness Scorecard | Ranks Multi-Timeframe Tester runs as keep, review or reject | In development |
+| YV Decode My EA | Matches account history to broker bar data to work out an EA's rules | In development |
+| YV Strategy Audit | Checks written strategy rules and code for missing or conflicting details | In development |
+
+None of the tools is sold or publicly downloadable yet.
+
+---
+
 ## Development Approach
 
 Our development process emphasizes:
