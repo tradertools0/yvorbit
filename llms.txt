@@ -1,0 +1,26 @@
+# YV Orbit
+
+> YV Orbit is an independent algorithmic trading research and development project. It designs, codes and tests MetaTrader 5 (MT5) Expert Advisors (EAs) and builds in-house tools to test them properly. Every published test goes on a public record, including the ones that lost money.
+
+YV Orbit is not a broker, does not manage anyone's money, is not a regulated financial firm and does not give investment advice. Test results describe past behaviour under specific settings and are not a guarantee of future results. Most report images are summary graphics rather than raw Strategy Tester exports, and nothing on the site has been independently audited.
+
+## Main pages
+
+- [Home and test record](https://www.yvorbit.com/): MT5 EA test record with profit factor, win rate and net result for each published backtest and forward test, including losing tests
+- [Report library](https://www.yvorbit.com/evidence.html): the report images behind each test, with the test conditions each image shows and what it leaves out
+- [Tools](https://www.yvorbit.com/tools.html): in-house tools for auditing MQL5 EA code, multi-timeframe testing, input-combination backtesting, robustness scoring and reverse engineering third-party EAs from trade history
+- [About](https://www.yvorbit.com/about.html): what YV Orbit does, why the test record is public, and what it is not
+
+## Published Expert Advisors
+
+- [Consecutive Candle Reversal (free, MQL5 Market)](https://www.mql5.com/en/market/product/200698): MT5 Expert Advisor published on the MQL5 Market
+
+## Policies
+
+- [Risk disclosure](https://www.yvorbit.com/risk.html): risks of trading leveraged products such as forex, CFDs, metals and crypto
+- [Privacy](https://www.yvorbit.com/privacy.html)
+
+## Optional
+
+- [Source repository](https://github.com/tradertools0/yvorbit): public GitHub repository for the website and report images
+- [TradingView profile](https://www.tradingview.com/u/chavdakrunal/): chart ideas
