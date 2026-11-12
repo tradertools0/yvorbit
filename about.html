@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#F1EDE7">
-<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#07090E">
+<meta name="color-scheme" content="dark">
+<script>document.documentElement.className+=" js"</script>
 <title>About YV Orbit | MT5 EA Development and Trading Research</title>
 <meta name="description" content="What YV Orbit is: independent research and development of MetaTrader 5 Expert Advisors, testing tools and an open test record.">
 <meta name="robots" content="index,follow">
@@ -22,7 +23,7 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -35,6 +36,7 @@
     <nav class="navlinks" id="main-nav" aria-label="Main">
       <a href="index.html#results">Results</a>
       <a href="index.html#ea">EAs</a>
+      <a href="index.html#library">Library</a>
       <a href="tools.html">Tools</a>
       <a href="index.html#method">Method</a>
       <a href="about.html">About</a>
@@ -64,7 +66,8 @@
     <h2>Published work</h2>
     <ul>
       <li>Two Expert Advisors on the MQL5 Market: <a href="https://www.mql5.com/en/market/product/200698" target="_blank" rel="noopener noreferrer">Consecutive Candle Reversal</a> (free) and Two Frame Momentum Trend (paid). Both passed MQL5 Market validation, which checks that an EA runs without technical errors. It is not a test of profitability.</li>
-      <li>Seven in-house tools, none public yet. YV EA Audit, YV Multi-Timeframe Tester and YV Reverse Engine are in private use. YV Strategy Audit, YV Combination Backtester, YV Robustness Scorecard and YV Decode My EA are in development. See <a href="tools.html">Tools</a>.</li>
+      <li>Eleven in-house tools, none public yet. In private use: YV EA Audit, YV EA Audit &amp; Fix, YV Orbit Compile Check, YV Orbit Broken Code, YV Orbit Robustness Lab, YV Multi-Timeframe Tester, YV Reverse Engine and YV TickDepth Check. In development: YV Strategy Audit, YV Combination Backtester and YV Decode My EA. See <a href="tools.html">Tools</a>.</li>
+      <li>The YV Orbit EA Library: eight locked final EA versions with published MT5 backtests, listed on the <a href="index.html#library">home page</a>. Only tested versions are listed.</li>
       <li>Chart ideas on <a href="https://www.tradingview.com/u/chavdakrunal/" target="_blank" rel="noopener noreferrer">TradingView</a>.</li>
     </ul>
 
@@ -98,5 +101,6 @@
 <script src="assets/config.js"></script>
 <script src="assets/records.js"></script>
 <script src="assets/site.js"></script>
+<script src="assets/fx.js"></script>
 </body>
 </html>

@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#F1EDE7">
-<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#07090E">
+<meta name="color-scheme" content="dark">
+<script>document.documentElement.className+=" js"</script>
 <title>YV Orbit | MT5 Expert Advisors &amp; Trading Research</title>
 <meta name="description" content="Explore MT5 Expert Advisors, transparent backtest reports and trading research tools from YV Orbit. Review test conditions and results before testing any EA.">
 <meta name="robots" content="index,follow">
@@ -26,7 +27,7 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -39,6 +40,7 @@
     <nav class="navlinks" id="main-nav" aria-label="Main">
       <a href="#results">Results</a>
       <a href="#ea">EAs</a>
+      <a href="#library">Library</a>
       <a href="tools.html">Tools</a>
       <a href="#method">Method</a>
       <a href="about.html">About</a>
@@ -47,26 +49,33 @@
   </div>
 </header>
 
+<div class="tape" data-tape aria-hidden="true"></div>
+
 <main id="top" tabindex="-1">
 
   <!-- HERO -->
   <section class="hero">
+    <canvas class="hero-canvas" aria-hidden="true"></canvas>
     <div class="wrap hero-grid">
       <div>
         <p class="kicker">MT5 Expert Advisors · Trading tools · Open test record</p>
-        <h1>Research the market.<span class="line2">Engineer the rules.</span></h1>
+        <h1>Research the market.<span class="line2"><em>Engineer</em> the rules.</span></h1>
         <p class="lede">YV Orbit builds MetaTrader 5 Expert Advisors and the tools to test them properly. Every test we run goes on the record below, including the ones that lost money.</p>
         <div class="actions">
-          <a class="btn solid" href="#results">See the test record</a>
+          <a class="btn solid" href="#results">See the test record <span class="arr" aria-hidden="true">&rarr;</span></a>
           <a class="btn" href="#ea">Our EAs on MQL5</a>
         </div>
         <div class="hero-stats">
           <div><strong data-n-tests>23</strong>Tests on the record</div>
           <div><strong>2</strong>EAs on the MQL5 Market</div>
-          <div><strong>7</strong>In-house tools: 3 in private use, 4 in development</div>
+          <div><strong>11</strong>In-house tools: 8 in private use, 3 in development</div>
         </div>
       </div>
-      <div class="hero-mark" aria-hidden="true"><svg viewBox="32 24 136 152"><path d="M32 24H69.3L100 75.2L130.7 24H168L100 137.3Z"/><path d="M84 126.7L100 153.3L116 126.7V176H84Z"/></svg></div>
+      <div class="hero-mark" aria-hidden="true">
+        <svg class="mark" viewBox="32 24 136 152"><path d="M32 24H69.3L100 75.2L130.7 24H168L100 137.3Z"/><path d="M84 126.7L100 153.3L116 126.7V176H84Z"/></svg>
+        <div class="hud tl">Every test in orbit<br><b>Distance = profit factor</b></div>
+        <div class="hud br">Gold ring = PF 1.00<br><b><span class="neg">inside lost</span> · <span class="pos">outside made</span></b></div>
+      </div>
     </div>
   </section>
 
@@ -90,7 +99,8 @@
   <section class="block" id="results">
     <div class="wrap">
       <div class="block-head">
-        <h2 class="display">The test record</h2>
+        <div><span class="eyebrow">01 / Results</span>
+        <h2 class="display">The test <em>record</em></h2></div>
         <p class="lede"><span data-n-entries>24</span> entries: <span data-n-tests>23</span> tests with results and <span data-n-updates>1</span> development update. Every number is copied from a published report image or a YV Orbit trade report. Select any row to see the image, the test conditions it shows, and what it leaves out.</p>
       </div>
 
@@ -143,7 +153,8 @@
   <section class="block" id="ea">
     <div class="wrap">
       <div class="block-head">
-        <h2 class="display">Our EAs on the MQL5 Market</h2>
+        <div><span class="eyebrow">02 / Expert Advisors</span>
+        <h2 class="display">Our EAs on the <em>MQL5</em> Market</h2></div>
         <p class="lede">Both passed MQL5 Market validation. One is free so traders can test our work on their own broker. The other is our first paid release. Validation checks that an EA runs without technical errors; it does not test whether the EA is profitable.</p>
       </div>
 
@@ -189,21 +200,117 @@
     </div>
   </section>
 
+
+  <!-- EA LIBRARY (final locked versions, tested only) -->
+  <section class="block" id="library">
+    <div class="wrap">
+      <div class="block-head">
+        <div><span class="eyebrow">03 / EA Library</span>
+        <h2 class="display">Final versions. <em>Tested</em> only.</h2></div>
+        <p class="lede">Every EA below is a locked final version with a published MT5 backtest. Versions that were never tested are not listed. Tested means backtested on past prices, not proven in live trading.</p>
+      </div>
+
+      <div class="funnel" aria-label="How the library is checked">
+        <div><strong>416</strong><span>EA codes in the library, every one written in MQL5</span></div>
+        <div><strong>414</strong><span>compile without errors in MetaEditor (2 still need a fix)</span></div>
+        <div><strong>340</strong><span>of 524 short smoke backtests took trades (10 Nov 2026)</span></div>
+        <div><strong>8</strong><span>locked final versions with a full backtest, listed here</span></div>
+      </div>
+
+      <div class="lib-grid">
+          <article class="lib-card">
+            <div class="lib-top"><span class="lib-id">EA-001</span><span class="lib-ver">v4.3</span></div>
+            <h3>Structure Engine Gold</h3>
+            <p class="lib-meta">XAUUSD · M30 · XM Global</p>
+            <div class="lib-res"><strong class="pos">+$875.42</strong><span>PF 1.15</span></div>
+            <p class="lib-meta">521 trades · Jan 2025–Oct 2026</p>
+            <div class="chips"><span class="chip ok">Backtested</span><span class="chip warn">Forward test on demo</span></div>
+            <a class="lib-link" href="#record-19">Open the report <span aria-hidden="true">&rarr;</span></a>
+          </article>
+          <article class="lib-card">
+            <div class="lib-top"><span class="lib-id">EA-002</span><span class="lib-ver">v2.1</span></div>
+            <h3>Trend Engine Gold</h3>
+            <p class="lib-meta">XAUUSD · M15 (H1 trend) · E-Global Trade</p>
+            <div class="lib-res"><strong class="pos">+$1,624.96</strong><span>PF 1.25 / 1.09</span></div>
+            <p class="lib-meta">863 trades · 2025 + 2026</p>
+            <div class="chips"><span class="chip ok">Backtested</span><span class="chip warn">Forward test on demo</span></div>
+            <a class="lib-link" href="#record-20">Open the report <span aria-hidden="true">&rarr;</span></a>
+          </article>
+          <article class="lib-card">
+            <div class="lib-top"><span class="lib-id">EA-003</span><span class="lib-ver">v1.1</span></div>
+            <h3>Session Structure Gold</h3>
+            <p class="lib-meta">XAUUSD · M30 · IC Markets</p>
+            <div class="lib-res"><strong class="pos">+$1,246.85</strong><span>PF 1.29 / 1.17</span></div>
+            <p class="lib-meta">557 trades · 2025 + 2026</p>
+            <div class="chips"><span class="chip ok">Backtested</span><span class="chip warn">2025 on modelled ticks</span></div>
+            <a class="lib-link" href="#record-22">Open the report <span aria-hidden="true">&rarr;</span></a>
+          </article>
+          <article class="lib-card">
+            <div class="lib-top"><span class="lib-id">EA-004</span><span class="lib-ver">v1.6</span></div>
+            <h3>QQE Combo Gold</h3>
+            <p class="lib-meta">XAUUSD · M5 · Vantage</p>
+            <div class="lib-res"><strong class="pos">+$1,586.64</strong><span>PF 1.18</span></div>
+            <p class="lib-meta">852 trades · May 2025–Oct 2026</p>
+            <div class="chips"><span class="chip ok">Backtested</span></div>
+            <a class="lib-link" href="#record-24">Open the report <span aria-hidden="true">&rarr;</span></a>
+          </article>
+          <article class="lib-card">
+            <div class="lib-top"><span class="lib-id">EA-005</span><span class="lib-ver">v2.0.2</span></div>
+            <h3>Trend Engine Gold, Vantage</h3>
+            <p class="lib-meta">XAUUSD · M15 · Vantage</p>
+            <div class="lib-res"><strong class="pos">+$1,069.88</strong><span>PF 1.22</span></div>
+            <p class="lib-meta">592 trades · Jan 2025–Oct 2026</p>
+            <div class="chips"><span class="chip ok">Backtested</span><span class="chip warn">Forward test on demo</span></div>
+            <a class="lib-link" href="#record-25">Open the report <span aria-hidden="true">&rarr;</span></a>
+          </article>
+          <article class="lib-card">
+            <div class="lib-top"><span class="lib-id">EA 006</span><span class="lib-ver">v1.02</span></div>
+            <h3>EMA Trend + Pullback + Engulfing</h3>
+            <p class="lib-meta">XAUUSD · M15 (H1 filter) · Vantage</p>
+            <div class="lib-res"><strong class="pos">+$1,300.67</strong><span>PF 1.48</span></div>
+            <p class="lib-meta">222 trades · in-sample</p>
+            <div class="chips"><span class="chip ok">Backtested</span><span class="chip warn">Out-of-sample test pending</span></div>
+            <a class="lib-link" href="#record-26">Open the report <span aria-hidden="true">&rarr;</span></a>
+          </article>
+          <article class="lib-card">
+            <div class="lib-top"><span class="lib-id">EA 007</span><span class="lib-ver">v1.00</span></div>
+            <h3>CapitalGuard Replica</h3>
+            <p class="lib-meta">BTCUSD · daily levels · Vantage</p>
+            <div class="lib-res"><strong class="pos">+$195.27</strong><span>PF 3.98</span></div>
+            <p class="lib-meta">251 trades · Jan–Nov 2026</p>
+            <div class="chips"><span class="chip ok">Backtested</span><span class="chip ok">Robustness Lab: KEEP</span><span class="chip warn">Live fills much worse</span></div>
+            <a class="lib-link" href="#record-27">Open the report <span aria-hidden="true">&rarr;</span></a>
+          </article>
+          <article class="lib-card">
+            <div class="lib-top"><span class="lib-id">EA 009</span><span class="lib-ver">v1.4 locked</span></div>
+            <h3>PDH/PDL Breakout</h3>
+            <p class="lib-meta">XAUUSD · M15 · Vantage</p>
+            <div class="lib-res"><strong class="pos">+$386.34</strong><span>PF 1.20</span></div>
+            <p class="lib-meta">228 trades · Oct 2025–Nov 2026</p>
+            <div class="chips"><span class="chip ok">Backtested</span><span class="chip ok">Robustness Lab: KEEP</span></div>
+            <a class="lib-link" href="#record-28">Open the report <span aria-hidden="true">&rarr;</span></a>
+          </article>
+      </div>
+      <p class="fine ledger-note">Each result is copied from the MT5 report linked on the card and is also in the <a href="#results">test record</a>. PF is profit factor; two values mean two separate years. Fixed 0.01 or 0.02 lot. Smoke backtests use default inputs over the last 1 to 6 months and only show that an EA runs; their results are not published as performance.</p>
+    </div>
+  </section>
+
   <!-- TOOLS -->
   <section class="block" id="tools">
     <div class="wrap">
       <div class="block-head">
-        <h2 class="display">Tools we built for our own work</h2>
-        <p class="lede">Most EA problems are found too late, after hours of backtesting. These tools move the checks earlier and make testing repeatable. None of them is sold or publicly downloadable yet: three are in private use with access given case by case, and four are in development.</p>
+        <div><span class="eyebrow">04 / Tools</span>
+        <h2 class="display">Tools we built for our <em>own</em> work</h2></div>
+        <p class="lede">Most EA problems are found too late, after hours of backtesting. These tools move the checks earlier and make testing repeatable. None of them is sold or publicly downloadable yet: eight are in private use, with access given case by case, and three are in development.</p>
       </div>
       <div class="steps">
-        <div class="step"><h3>Check the rules and code</h3><p><a href="tools.html#strategy-audit">YV Strategy Audit</a> (in development) and <a href="tools.html#ea-audit">YV EA Audit</a> (in private use).</p></div>
+        <div class="step"><h3>Check the rules and code</h3><p><a href="tools.html#strategy-audit">YV Strategy Audit</a> (in development), <a href="tools.html#ea-audit">YV EA Audit</a>, <a href="tools.html#compile-check">Compile Check</a> and <a href="tools.html#broken-code">Broken Code</a> (in private use).</p></div>
         <div class="step"><h3>Test</h3><p><a href="tools.html#multitf-tester">YV Multi-Timeframe Tester</a> (in private use) and <a href="tools.html#combination-backtester">YV Combination Backtester</a> (new, in development).</p></div>
-        <div class="step"><h3>Judge the results</h3><p><a href="tools.html#robustness-scorecard">YV Robustness Scorecard</a> (new, in development) ranks runs as keep, review or reject.</p></div>
+        <div class="step"><h3>Judge the results</h3><p><a href="tools.html#robustness-lab">YV Orbit Robustness Lab</a> (new, in private use) runs Monte Carlo, walk-forward and sensitivity tests and gives keep, review or reject.</p></div>
         <div class="step"><h3>Study another EA</h3><p><a href="tools.html#reverse-engine">YV Reverse Engine</a> (in private use) and <a href="tools.html#decode-my-ea">YV Decode My EA</a> (new, in development).</p></div>
       </div>
       <div class="actions" style="margin-top:28px">
-        <a class="btn solid" href="tools.html">See all 7 tools</a>
+        <a class="btn solid" href="tools.html">See all 11 tools</a>
         <a class="btn" href="#connect">Ask about a tool</a>
       </div>
     </div>
@@ -213,7 +320,8 @@
   <section class="block" id="method">
     <div class="wrap">
       <div class="block-head">
-        <h2 class="display">How each EA is built</h2>
+        <div><span class="eyebrow">05 / Method</span>
+        <h2 class="display">How each EA is <em>built</em></h2></div>
         <p class="lede">A result only means something when the rules and test conditions are known. The same four steps apply to every project on the record.</p>
       </div>
       <div class="steps">
@@ -229,7 +337,8 @@
   <section class="connect" id="connect">
     <div class="wrap connect-grid">
       <div>
-        <h2 class="display" id="contact">Follow the work or get in touch</h2>
+        <div><span class="eyebrow">06 / Connect</span>
+        <h2 class="display" id="contact">Follow the work or <em>get in touch</em></h2></div>
         <p class="lede">New tests, EA updates and tool releases are posted on these channels first. Questions about our EAs, the tools or a strategy you want tested are welcome. Access requests for the tools are answered personally; there is no automatic sign-up.</p>
         <div class="socials" data-socials></div>
       </div>
@@ -251,7 +360,7 @@
             <option>Access to YV Reverse Engine</option>
             <option>Question about YV Strategy Audit</option>
             <option>Question about YV Combination Backtester</option>
-            <option>Question about YV Robustness Scorecard</option>
+            <option>Question about YV Orbit Robustness Lab</option>
             <option>Question about YV Decode My EA</option>
             <option>Custom EA or strategy testing</option>
             <option>Broker or IB collaboration</option>
@@ -294,6 +403,7 @@
 <script src="assets/config.js"></script>
 <script src="assets/records.js"></script>
 <script src="assets/site.js"></script>
+<script src="assets/fx.js"></script>
 <script>
 (function(){
   var t=new URLSearchParams(location.search).get('topic'),sel=document.getElementById('f-topic');

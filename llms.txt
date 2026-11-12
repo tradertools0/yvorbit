@@ -7,8 +7,9 @@ YV Orbit is not a broker, does not manage anyone's money, is not a regulated fin
 ## Main pages
 
 - [Home and test record](https://www.yvorbit.com/): MT5 EA test record with profit factor, win rate and net result for each published backtest and forward test, including losing tests
+- [EA Library](https://www.yvorbit.com/#library): the locked final versions of the YV Orbit EA Library (EA-001 to EA-005, EA 006, EA 007, EA 009), each with a published MT5 backtest; only tested versions are listed
 - [Report library](https://www.yvorbit.com/evidence.html): the report images behind each test, with the test conditions each image shows and what it leaves out
-- [Tools](https://www.yvorbit.com/tools.html): in-house tools for auditing MQL5 EA code, multi-timeframe testing, input-combination backtesting, robustness scoring and reverse engineering third-party EAs from trade history
+- [Tools](https://www.yvorbit.com/tools.html): eleven in-house tools: MQL5 code audit and repair, compile and smoke checks, the Robustness Lab (Monte Carlo, walk-forward, sensitivity), multi-timeframe and input-combination backtesting, and reverse engineering third-party EAs from trade history
 - [About](https://www.yvorbit.com/about.html): what YV Orbit does, why the test record is public, and what it is not
 
 ## Published Expert Advisors

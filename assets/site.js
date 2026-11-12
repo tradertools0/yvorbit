@@ -59,7 +59,8 @@
     ["email", "Email", C.email ? "mailto:" + C.email : ""]
   ];
   $$("[data-socials]").forEach(function (box) {
-    box.innerHTML = SOCIAL.filter(function (s) { return s[2]; }).map(function (s) {
+    var SHOW = ["whatsapp", "instagram"]; /* site par sirf yahi do social buttons dikhenge */
+    box.innerHTML = SOCIAL.filter(function (s) { return s[2] && SHOW.indexOf(s[0]) !== -1; }).map(function (s) {
       var ext = s[0] !== "email";
       return '<a class="social" href="' + esc(s[2]) + '"' + (ext ? ' target="_blank" rel="noopener noreferrer"' : "") + ">" + icon(s[0]) + "<span>" + s[1] + "</span></a>";
     }).join("");

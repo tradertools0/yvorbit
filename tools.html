@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#F1EDE7">
-<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#07090E">
+<meta name="color-scheme" content="dark">
+<script>document.documentElement.className+=" js"</script>
 <title>YV Orbit Tools | MT5 EA Audit, Backtesting and Reverse Engineering</title>
 <meta name="description" content="The in-house tools YV Orbit uses to audit, backtest and decode MetaTrader 5 Expert Advisors: three in private use and four in development.">
 <meta name="robots" content="index,follow">
@@ -22,7 +23,7 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -35,6 +36,7 @@
     <nav class="navlinks" id="main-nav" aria-label="Main">
       <a href="index.html#results">Results</a>
       <a href="index.html#ea">EAs</a>
+      <a href="index.html#library">Library</a>
       <a href="tools.html" aria-current="page">Tools</a>
       <a href="index.html#method">Method</a>
       <a href="about.html">About</a>
@@ -60,7 +62,7 @@
     <div class="wrap">
       <p class="kicker">In-house tools</p>
       <h1 style="font-size:clamp(32px,4.6vw,56px);max-width:18ch">Tools we built for our own work</h1>
-      <p class="lede">Most EA problems are found too late, after hours of backtesting. These tools move the checks earlier and make testing repeatable. None of them is sold or publicly downloadable yet: three are in private use with access given case by case, and four are still being built.</p>
+      <p class="lede">Most EA problems are found too late, after hours of backtesting. These tools move the checks earlier and make testing repeatable. None of them is sold or publicly downloadable yet: eight are in private use, with access given case by case, and three are still being built.</p>
     </div>
   </section>
 
@@ -71,9 +73,9 @@
         <p class="lede">Each tool answers one question. Used in order, they take an idea from written rules to a ranked test result.</p>
       </div>
       <div class="steps">
-        <div class="step"><h3>Check the rules and code</h3><p><a href="#strategy-audit">YV Strategy Audit</a> checks the written rules. <a href="#ea-audit">YV EA Audit</a> checks the MQL5 code.</p></div>
+        <div class="step"><h3>Check the rules and code</h3><p><a href="#strategy-audit">YV Strategy Audit</a> checks the written rules. <a href="#ea-audit">YV EA Audit</a>, <a href="#ea-audit-fix">Audit &amp; Fix</a>, <a href="#compile-check">Compile Check</a> and <a href="#broken-code">Broken Code</a> check and repair the MQL5 code.</p></div>
         <div class="step"><h3>Test</h3><p><a href="#multitf-tester">YV Multi-Timeframe Tester</a> runs one EA on every timeframe. <a href="#combination-backtester">YV Combination Backtester</a> runs it across input combinations.</p></div>
-        <div class="step"><h3>Judge the results</h3><p><a href="#robustness-scorecard">YV Robustness Scorecard</a> ranks test runs as keep, review or reject.</p></div>
+        <div class="step"><h3>Judge the results</h3><p><a href="#robustness-lab">YV Orbit Robustness Lab</a> runs Monte Carlo, walk-forward and sensitivity tests and gives keep, review or reject.</p></div>
         <div class="step"><h3>Study another EA</h3><p><a href="#reverse-engine">YV Reverse Engine</a> and <a href="#decode-my-ea">YV Decode My EA</a> work out how a third-party EA trades from its history.</p></div>
       </div>
     </div>
@@ -86,7 +88,7 @@
         <button type="button" data-tab="private" aria-pressed="false">In private use<span class="n"></span></button>
         <button type="button" data-tab="dev" aria-pressed="false">In development<span class="n"></span></button>
       </div>
-      <p class="tool-group-note">Tools marked <strong>New</strong> were added in October 2026. Screens are shown in the YV Orbit style. Previews marked as concepts are not screenshots, and features and limits of tools in development may change before release.</p>
+      <p class="tool-group-note">Tools marked <strong>New</strong> were added in October and November 2026. Previews marked as concepts are not screenshots; the other screens are real. Features and limits of tools in development may change before release.</p>
 
       <div class="tools">
 
@@ -156,6 +158,99 @@
           </div>
         </article>
 
+
+        <article class="tool is-new" id="robustness-lab" data-status="private"><span id="robustness-scorecard"></span>
+          <span class="platform">Windows app, no setup needed · v1.2.4</span>
+          <h3>YV Orbit Robustness Lab</h3>
+          <p>Takes an EA through four tests in MetaTrader 5 and gives one verdict. It is the working version of the Robustness Scorecard idea, and it is what decides whether an EA in our library is kept.</p>
+          <a class="tool-shot" href="assets/tools/yv-robustness-lab.jpg" target="_blank" rel="noopener"><img loading="lazy" src="assets/tools/yv-robustness-lab.jpg" width="1366" height="728" alt="YV Orbit Robustness Lab screen: pipeline of base, combinations, shortlist, Monte Carlo, walk-forward and sensitivity, with a sensitivity grid and a KEEP verdict"><span class="sr-only"> (opens full-size image)</span></a>
+          <ul>
+            <li>Shuffles the EA's strategy inputs with MT5's genetic optimiser and shortlists the best distinct sets</li>
+            <li>Monte Carlo: 1,000 reshuffles of the trade order to find the worst-case drawdown</li>
+            <li>Walk-forward: 5 windows, re-optimised in-sample, judged only on unseen data</li>
+            <li>Sensitivity: nudges two inputs from 60% to 140% to check the result is a plateau, not a spike</li>
+            <li>Tests the EA code as it is; it never changes the strategy</li>
+          </ul>
+          <div class="demo">
+            <div class="demo-label">Every EA and timeframe gets one verdict</div>
+            <div class="verdicts">
+              <span class="v-ok">Keep</span><span class="v-mid">Review</span><span class="v-bad">Reject</span><span class="v-mid">No trades</span><span class="v-bad">Broken</span>
+            </div>
+            <dl class="tool-facts"><dt>For</dt><dd>Deciding which EAs and settings deserve a forward test</dd><dt>Needs</dt><dd>Windows with MetaTrader 5 installed</dd><dt>Used on</dt><dd>EA 007 and EA 009: both KEEP</dd><dt>Limits</dt><dd>Built on backtests, so it shares their limits. A KEEP is a reason to forward test, not a promise of live profit.</dd></dl>
+            <div class="status"><span class="status-badge">In private use</span><a class="btn" href="index.html?topic=Something%20else#connect">Ask about it</a></div>
+          </div>
+        </article>
+
+        <article class="tool is-new" id="compile-check" data-status="private">
+          <span class="platform">Windows app, no setup needed · v1.2.4</span>
+          <h3>YV Orbit Compile Check</h3>
+          <p>Compiles every EA in the library with MetaEditor, sorts them into clean and broken, then gives each one a short smoke backtest to see if it trades at all.</p>
+          <a class="tool-shot" href="assets/tools/yv-compile-check.jpg" target="_blank" rel="noopener"><img loading="lazy" src="assets/tools/yv-compile-check.jpg" width="1366" height="728" alt="YV Orbit Compile Check screen after a full smoke test: 524 tested, 340 runs, 180 no trades, 1 broken, 3 errors"><span class="sr-only"> (opens full-size image)</span></a>
+          <ul>
+            <li>Compiled 416 EAs on 10 Nov 2026: 360 clean, 54 with warnings only, 2 with errors</li>
+            <li>Smoke test: last 1 to 6 months, the EA's own symbol and timeframe, default inputs</li>
+            <li>524 smoke runs (EAs with no fixed symbol run on both gold and bitcoin): 340 traded, 180 took no trades</li>
+            <li>Catches log floods, missing symbols and runs that produce no report</li>
+          </ul>
+          <div class="demo">
+            <div class="demo-label">Each EA gets one smoke status</div>
+            <div class="verdicts"><span class="v-ok">Runs</span><span class="v-mid">No trades</span><span class="v-bad">Broken</span><span class="v-mid">Error</span></div>
+            <dl class="tool-facts"><dt>For</dt><dd>Clearing out broken code before real testing</dd><dt>Needs</dt><dd>Windows with MetaTrader 5 and MetaEditor</dd><dt>Limits</dt><dd>A smoke run only shows the EA works. Its profit or loss is not a performance result and is not published as one.</dd></dl>
+            <div class="status"><span class="status-badge">In private use</span><a class="btn" href="index.html?topic=Something%20else#connect">Ask about it</a></div>
+          </div>
+        </article>
+
+        <article class="tool is-new" id="broken-code" data-status="private">
+          <span class="platform">Windows app, no setup needed · v1.0.2</span>
+          <h3>YV Orbit Broken Code</h3>
+          <p>Reads an EA's code, finds the faults that stop it from trading or from closing its trades, and writes a repaired copy next to the original.</p>
+          <ul>
+            <li>Finds EAs with no exit at all, gates that never open, bar-0 volume checks, symbol names typed as text and timers that never start</li>
+            <li>Fixes reversed price arrays, where the code reads the oldest bar as the newest</li>
+            <li>Shows every fault with the code before and after the repair</li>
+            <li>The original file and the strategy's entries and exits are never changed</li>
+          </ul>
+          <div class="demo">
+            <div class="demo-label">Each fault gets a severity</div>
+            <div class="verdicts"><span class="v-bad">Broken</span><span class="v-bad">Blocker</span><span class="v-mid">Bug</span><span class="v-ok">Warning</span></div>
+            <dl class="tool-facts"><dt>For</dt><dd>EAs the Robustness Lab marks Broken, No trades or Error</dd><dt>Needs</dt><dd>Windows with MetaEditor</dd><dt>Limits</dt><dd>Repairs code faults only. EAs that need a missing indicator or a new exit rule go to a manual list.</dd></dl>
+            <div class="status"><span class="status-badge">In private use</span><a class="btn" href="index.html?topic=Something%20else#connect">Ask about it</a></div>
+          </div>
+        </article>
+
+        <article class="tool is-new" id="ea-audit-fix" data-status="private">
+          <span class="platform">Windows app, no setup needed · v1.4</span>
+          <h3>YV EA Audit &amp; Fix</h3>
+          <p>The desktop companion to YV EA Audit. It audits a whole EA collection at once and writes a corrected copy of each EA on one shared YV engine, ready for the Strategy Tester.</p>
+          <ul>
+            <li>Checks entry, exit, stop-loss, take-profit, drawdown and lot-size handling in every EA</li>
+            <li>Makes every timeframe an input: follow the chart, step up or down, or fixed</li>
+            <li>Moves unusable files aside: empty templates, cut-off code, files without OnTick, MT4 code</li>
+            <li>New risk options are added switched off, so the strategy behaves as written</li>
+          </ul>
+          <div class="demo">
+            <div class="demo-label">One collection in, a test-ready library out</div>
+            <div class="tf-flow"><span class="tf">EA collection</span><span class="arrow" aria-hidden="true">&rarr;</span><span class="out">Corrected EAs</span><span class="out">Audit report</span></div>
+            <dl class="tool-facts"><dt>For</dt><dd>Preparing a large EA library for batch testing</dd><dt>Needs</dt><dd>Windows with MetaTrader 5</dd><dt>Limits</dt><dd>Corrects structure and safety, not the strategy. A corrected EA still has to pass its tests.</dd></dl>
+            <div class="status"><span class="status-badge">In private use</span><a class="btn" href="index.html?topic=Something%20else#connect">Ask about it</a></div>
+          </div>
+        </article>
+
+        <article class="tool is-new" id="tickdepth" data-status="private">
+          <span class="platform">MT5 script</span>
+          <h3>YV TickDepth Check</h3>
+          <p>A small script that shows how far back a broker's real tick history really goes for a symbol, before a backtest is trusted.</p>
+          <ul>
+            <li>Found that Vantage real-tick history for XAUUSD starts in October 2025</li>
+            <li>Tells us which part of a long backtest runs on generated ticks instead of real ones</li>
+            <li>That is why EA 009's final report covers October 2025 to November 2026 only</li>
+          </ul>
+          <div class="demo">
+            <dl class="tool-facts"><dt>For</dt><dd>Anyone comparing backtests across brokers</dd><dt>Needs</dt><dd>MetaTrader 5</dd><dt>Limits</dt><dd>Reports the history the terminal holds; a broker can add or remove data later.</dd></dl>
+            <div class="status"><span class="status-badge">In private use</span></div>
+          </div>
+        </article>
+
         <!-- IN DEVELOPMENT -->
         <article class="tool is-new" id="combination-backtester" data-status="dev">
           <span class="platform">Windows app, no setup needed</span>
@@ -179,26 +274,6 @@
           </div>
         </article>
 
-        <article class="tool is-new" id="robustness-scorecard" data-status="dev">
-          <span class="platform">Add-on for the Multi-Timeframe Tester</span>
-          <h3>YV Robustness Scorecard</h3>
-          <p>A ranking layer on top of the Multi-Timeframe Tester's master report. It sorts test runs by how robust they look, not by which one made the most money.</p>
-          <a class="tool-shot" href="assets/tools/yv-robustness-scorecard.jpg" target="_blank" rel="noopener"><img loading="lazy" src="assets/tools/yv-robustness-scorecard.jpg" width="1400" height="600" alt="Concept preview of YV Robustness Scorecard: master report input and keep, review or reject verdicts"><span class="sr-only"> (opens full-size image)</span></a><p class="fine" style="margin:-12px 0 18px;font-size:13px">Concept preview, not a screenshot. The tool is in development and the final screen may differ.</p>
-          <ul>
-            <li>Reads the master report the Multi-Timeframe Tester already produces</li>
-            <li>Gives every run one clear verdict: keep, review or reject</li>
-            <li>Ranks by robustness, so one lucky run does not top the list</li>
-            <li>Adds a decision step between testing and the next change to the EA</li>
-          </ul>
-          <div class="demo">
-            <div class="demo-label">Each test run gets one verdict</div>
-            <div class="verdicts">
-              <span class="v-ok">Keep</span><span class="v-mid">Review</span><span class="v-bad">Reject</span>
-            </div>
-            <dl class="tool-facts"><dt>For</dt><dd>Anyone deciding which test results to trust</dd><dt>Needs</dt><dd>YV Multi-Timeframe Tester</dd><dt>Access</dt><dd>Not available yet. Pricing not announced.</dd><dt>Limits</dt><dd>Scores only what the backtests show. A keep verdict does not mean the EA will make money live.</dd></dl>
-            <div class="status"><span class="status-badge">In development</span><a class="btn" href="index.html?topic=Question%20about%20YV%20Robustness%20Scorecard#connect">Ask about it</a></div>
-          </div>
-        </article>
 
         <article class="tool is-new" id="decode-my-ea" data-status="dev">
           <span class="platform">Windows app, no setup needed</span>
@@ -270,6 +345,7 @@
 <script src="assets/config.js"></script>
 <script src="assets/records.js"></script>
 <script src="assets/site.js"></script>
+<script src="assets/fx.js"></script>
 <script>
 (function(){
   var tabs=document.querySelectorAll('[data-tab]'),cards=document.querySelectorAll('.tool[data-status]');

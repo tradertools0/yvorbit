@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#F1EDE7">
-<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#07090E">
+<meta name="color-scheme" content="dark">
+<script>document.documentElement.className+=" js"</script>
 <title>EA Backtest Report Library | YV Orbit</title>
 <meta name="description" content="Every backtest, forward test and development update YV Orbit has published, with the report image, test conditions and an arithmetic check for each one.">
 <meta name="robots" content="index,follow">
@@ -22,7 +23,7 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -35,6 +36,7 @@
     <nav class="navlinks" id="main-nav" aria-label="Main">
       <a href="index.html#results">Results</a>
       <a href="index.html#ea">EAs</a>
+      <a href="index.html#library">Library</a>
       <a href="tools.html">Tools</a>
       <a href="index.html#method">Method</a>
       <a href="about.html">About</a>
@@ -49,11 +51,12 @@
       <p class="kicker">Open test record</p>
       <h1 style="font-size:clamp(32px,4.6vw,56px);max-width:16ch">Report library</h1>
       <p class="lede">The images behind the test record: <span data-n-images>18</span> report images covering <span data-n-tests>23</span> tests (<span data-n-win>11</span> above breakeven, <span data-n-loss>12</span> below) and <span data-n-updates>1</span> development update. Select a report to see its numbers, the test conditions it shows, and open the full-size image.</p>
-      <p class="fine" style="max-width:70ch"><span data-n-tester>6</span> images include the MT5 Strategy Tester results screen. The others are summary graphics made from tester results, account trade logs or a written YV Orbit trade report. Entries marked <em class="flag" style="margin:0">Data note</em> have an image that does not add up or contradicts itself; the viewer explains each one. Report images 01 to 15 were redrawn in the YV Orbit style on 30 October 2026, and 17 and 18 were made the same way from Strategy Tester screenshots, with every number copied unchanged; each report links its <a href="https://github.com/tradertools0/yvorbit/tree/main/assets/evidence/original">original image</a>. <a href="index.html#how-to-read">How to read the record</a>.</p>
+      <p class="fine" style="max-width:70ch"><span data-n-tester>6</span> images include the MT5 Strategy Tester results screen. The others are summary graphics made from tester results, account trade logs or a written YV Orbit trade report. Entries marked <em class="flag" style="margin:0">Data note</em> have an image that does not add up or contradicts itself; the viewer explains each one. Images 19 to 28 (added 13 November 2026) are the final locked versions of the YV Orbit EA Library: real MT5 screenshots or reports, with account numbers and EA input lines hidden. Report images 01 to 15 were redrawn in the YV Orbit style on 30 October 2026, and 17 and 18 were made the same way from Strategy Tester screenshots, with every number copied unchanged; each redrawn report links its <a href="https://github.com/tradertools0/yvorbit/tree/main/assets/evidence/original">original image</a>. <a href="index.html#how-to-read">How to read the record</a>.</p>
     </div>
   </section>
 
   <div class="wrap">
+    <div class="gal-filters filters" data-gal-filters role="group" aria-label="Filter reports" hidden></div>
     <div class="gallery" data-gallery><p class="fine">Loading reports… If nothing appears, JavaScript may be turned off. The report images are in the <a href="https://github.com/tradertools0/yvorbit/tree/main/assets/evidence">public repository</a>.</p></div>
   </div>
 </main>
@@ -84,5 +87,6 @@
 <script src="assets/config.js"></script>
 <script src="assets/records.js"></script>
 <script src="assets/site.js"></script>
+<script src="assets/fx.js"></script>
 </body>
 </html>

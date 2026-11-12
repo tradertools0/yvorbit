@@ -189,5 +189,71 @@ window.YV_RECORDS = [
     kind: "backtest", source: "tester", period: null,
     trades: 655, net: 5571.97, gp: 14802.20, gl: -9230.23, pf: 1.60, win: 38.17, dd: "40.15% ($1,056.81, equity relative)",
     deposit: 1000, lot: null, model: null, quality: 99, broker: "XM demo data (XMGlobal-MT5 9)",
-    note: "Largest net result on the record so far, with a 40.15% relative equity drawdown. Screenshot taken 25 Oct 2026; test dates not shown." }
+    note: "Largest net result on the record so far, with a 40.15% relative equity drawdown. Screenshot taken 25 Oct 2026; test dates not shown." },
+  /* ---- added 13 Nov 2026: final locked versions of the YV Orbit EA Library ----
+     Numbers copied from MT5 Strategy Tester screenshots (Backtest tab) or the
+     MT5 HTML report, cross-checked with each EA's BACKTEST_SUMMARY / README.
+     Account numbers and EA input lines are hidden in the published images. */
+
+  { id: "19", img: "evidence-19.jpg", ea: "EA-001", name: "Structure Engine Gold M30 (EA-001)", symbol: "XAUUSD", tf: "M30",
+    kind: "backtest", source: "tester", period: "1 Jan 2025 – 23 Oct 2026",
+    trades: 521, net: 875.42, gp: 6601.62, gl: -5726.20, pf: 1.15, win: 50.67, dd: "25.37% ($377.74, balance)",
+    deposit: 1000, lot: "0.01 fixed", model: "Every tick based on real ticks", quality: 99, broker: "XM Global MT5 demo",
+    note: "Locked as v4.3 because it was profitable in both 2025 (PF 1.09) and 2026 (PF 1.20). The same rules lost money on M5 and M15. The 2025 edge is thin." },
+
+  { id: "20", img: "evidence-20.jpg", ea: "EA-002", name: "Trend Engine Gold M15 v2.1 (EA-002), 2025", symbol: "XAUUSD", tf: "M15",
+    kind: "backtest", source: "tester", period: "1 Jan – 31 Dec 2025",
+    trades: 423, net: 1104.06, gp: 5553.70, gl: -4449.64, pf: 1.25, win: 68.56, dd: "35.64% ($549.26, balance)",
+    deposit: 1000, lot: "0.02 fixed", model: "Every tick based on real ticks", quality: 100, broker: "E-Global Trade MT5 demo",
+    note: "High win rate, but the average loss (33.15) is 1.7 times the average win (19.15). The original v2.0 lost money on the same year (PF 0.94) because of a unit bug fixed in v2.1." },
+
+  { id: "21", img: "evidence-21.jpg", ea: "EA-002", name: "Trend Engine Gold M15 v2.1 (EA-002), 2026", symbol: "XAUUSD", tf: "M15",
+    kind: "backtest", source: "tester", period: "1 Jan – 31 Oct 2026",
+    trades: 440, net: 520.90, gp: 6182.49, gl: -5661.59, pf: 1.09, win: 73.86, dd: "27.30% ($530.23, balance)",
+    deposit: 1000, lot: "0.02 fixed", model: "Every tick based on real ticks", quality: 100, broker: "E-Global Trade MT5 demo",
+    note: "Second year still profitable, so v2.1 was locked. Thin edge: average loss 48.87 against average win 19.02. A tick replay of October 2026 lost money." },
+
+  { id: "22", img: "evidence-22.jpg", ea: "EA-003", name: "Session Structure Gold M30 v1.1 (EA-003), 2025", symbol: "XAUUSD", tf: "M30",
+    kind: "backtest", source: "tester", period: "1 Jan – 31 Dec 2025",
+    trades: 319, net: 632.98, gp: 2824.76, gl: -2191.78, pf: 1.29, win: 52.0, dd: "12.26% ($222.92, balance)",
+    deposit: 1000, lot: "0.01 fixed", model: null, quality: 0, broker: "IC Markets (SC) MT5 demo",
+    note: "Same signal as EA-001, tested on IC Markets data.",
+    check: "History quality is 0%: this broker had no real tick history for 2025, so the tester used modelled ticks, which usually flatter SL/TP strategies. On XM real ticks the same signal made PF 1.09 in 2025." },
+
+  { id: "23", img: "evidence-23.jpg", ea: "EA-003", name: "Session Structure Gold M30 v1.1 (EA-003), 2026", symbol: "XAUUSD", tf: "M30",
+    kind: "backtest", source: "tester", period: "1 Jan – 31 Oct 2026",
+    trades: 238, net: 613.87, gp: 4279.23, gl: -3665.36, pf: 1.17, win: 50.8, dd: "35.03% ($526.35, balance)",
+    deposit: 1000, lot: "0.01 fixed", model: null, quality: 70, broker: "IC Markets (SC) MT5 demo",
+    note: "Profitable in both years, so v1.1 on M30 was locked. The M5 version lost money in both years and was dropped." },
+
+  { id: "24", img: "evidence-24.jpg", ea: "EA-004", name: "QQE Combo Gold M5 v1.6 (EA-004), locked", symbol: "XAUUSD", tf: "M5",
+    kind: "backtest", source: "tester", period: "28 May 2025 – 30 Oct 2026",
+    trades: 852, net: 1586.64, gp: 10179.10, gl: -8592.46, pf: 1.18, win: 35.45, dd: "29.53% ($471.08, equity)",
+    deposit: 1000, lot: "0.01 fixed", model: "Every tick based on real ticks", quality: 100, broker: "Vantage Markets",
+    note: "Final locked version of the QQE Combo (record #17 is the older v1.5). Low win rate carried by an average win about twice the average loss. Longest losing run: 14 trades." },
+
+  { id: "25", img: "evidence-25.jpg", ea: "EA-005", name: "Trend Engine Gold M15, Vantage (EA-005)", symbol: "XAUUSD", tf: "M15",
+    kind: "backtest", source: "graphic", period: "Jan 2025 – Oct 2026",
+    trades: 592, net: 1069.88, gp: null, gl: null, pf: 1.22, win: 57.8, dd: "$340 (balance)",
+    deposit: 10000, lot: "0.01 fixed", model: "Every tick based on real ticks", quality: null, broker: "Vantage Markets",
+    note: "Two MT5 runs combined: 2025 +591.60 (PF 1.27, 295 trades) and Jan–Oct 2026 +478.28 (PF 1.19, 297 trades). A tick replay of October 2026 lost money (PF 0.68)." },
+
+  { id: "26", img: "evidence-26.jpg", ea: "EA 006", name: "EMA Trend + Pullback + Engulfing v1.02 (EA 006)", symbol: "XAUUSD", tf: "M15",
+    kind: "backtest", source: "tester", period: null,
+    trades: 222, net: 1300.67, gp: 4005.73, gl: -2705.06, pf: 1.48, win: 36.04, dd: "19.26% ($310.67, equity)",
+    deposit: 1000, lot: "0.01 fixed", model: "Every tick based on real ticks", quality: 100, broker: "Vantage Markets",
+    note: "Average win 2.63 times the average loss. The default inputs came from studying this same data, so this is an in-sample result; an out-of-sample test is still needed." },
+
+  { id: "27", img: "evidence-27.jpg", ea: "EA 007", name: "CapitalGuard Replica BTCUSD (EA 007)", symbol: "BTCUSD", tf: "D1 levels",
+    kind: "backtest", source: "tester", period: "1 Jan – 8 Nov 2026",
+    trades: 251, net: 195.27, gp: 260.79, gl: -65.52, pf: 3.98, win: 89.2, dd: "0.98% ($10.75, equity)",
+    deposit: 1000, lot: "0.01 fixed", model: "Every tick based on real ticks", quality: 100, broker: "Vantage Markets",
+    note: "Replica of a third-party EA, decoded from its live history: 199 of 205 live trades matched. Robustness Lab verdict KEEP.",
+    check: "Tester fills are far better than live. The original EA's live trades lost about $27 per entry to slippage, and its live result was about 37% of this tester result. Treat this PF as an upper bound." },
+
+  { id: "28", img: "evidence-28.jpg", ea: "EA 009", name: "PDH/PDL Breakout XAUUSD (EA 009), locked", symbol: "XAUUSD", tf: "M15",
+    kind: "backtest", source: "tester", period: "1 Oct 2025 – 11 Nov 2026",
+    trades: 228, net: 386.34, gp: 2300.40, gl: -1914.06, pf: 1.20, win: 35.53, dd: "1.80% ($182.28, equity)",
+    deposit: 10000, lot: "0.01 fixed", model: "Every tick based on real ticks", quality: 100, broker: "Vantage Markets",
+    note: "Robustness Lab verdict KEEP on 3 years of data (PF 1.28, walk-forward 4 of 5 windows). Thin edge: about $1.69 per trade at 0.01 lot, which live slippage on stop entries can erase." }
 ];
