@@ -1,6 +1,8 @@
 # YV Orbit
 
-> YV Orbit is an independent algorithmic trading research and development project. It designs, codes and tests MetaTrader 5 (MT5) Expert Advisors (EAs) and builds in-house tools to test them properly. Every published test goes on a public record, including the ones that lost money.
+> YV Orbit is an independent algorithmic trading research and development project. It designs, codes and tests MetaTrader 5 (MT5) Expert Advisors (EAs) and builds in-house tools to test them properly. Every published test goes on a public record, including the ones that lost money. Tagline: "Tested. Not promised."
+
+Founder: Krunal Chavda, MT5 Expert Advisor developer and trading researcher in Ahmedabad, Gujarat, India (15+ years in Indian capital markets). Also known as YV Quant Labs.
 
 YV Orbit is not a broker, does not manage anyone's money, is not a regulated financial firm and does not give investment advice. Test results describe past behaviour under specific settings and are not a guarantee of future results. Most report images are summary graphics rather than raw Strategy Tester exports, and nothing on the site has been independently audited.
 
@@ -10,6 +12,7 @@ YV Orbit is not a broker, does not manage anyone's money, is not a regulated fin
 - [EA Library](https://www.yvorbit.com/#library): the locked final versions of the YV Orbit EA Library (EA-001 to EA-005, EA 006, EA 007, EA 009), each with a published MT5 backtest; only tested versions are listed
 - [Report library](https://www.yvorbit.com/evidence.html): the report images behind each test, with the test conditions each image shows and what it leaves out
 - [Tools](https://www.yvorbit.com/tools.html): eleven in-house tools: MQL5 code audit and repair, compile and smoke checks, the Robustness Lab (Monte Carlo, walk-forward, sensitivity), multi-timeframe and input-combination backtesting, and reverse engineering third-party EAs from trade history
+- [Tools Factory](https://www.yvorbit.com/factory.html): the seven-step MT5 testing pipeline in order (01 Reverse Engine, 02 EA Audit & Fix, 03 Compile Check, 04 Broken Code, 05 Multi-Timeframe Tester, 06 Combination Backtester, 07 Robustness Lab) and the YV Orbit Tower autopilot that runs the whole line on one EA and returns one report
 - [About](https://www.yvorbit.com/about.html): what YV Orbit does, why the test record is public, and what it is not
 
 ## Published Expert Advisors
@@ -24,4 +27,5 @@ YV Orbit is not a broker, does not manage anyone's money, is not a regulated fin
 ## Optional
 
 - [Source repository](https://github.com/tradertools0/yvorbit): public GitHub repository for the website and report images
-- [TradingView profile](https://www.tradingview.com/u/chavdakrunal/): chart ideas
+- [TradingView profile](https://www.tradingview.com/u/chavdakrunal/): chart ideas by Krunal Chavda
+- [Instagram](https://www.instagram.com/krunalchav777/) and [X](https://x.com/krunalchav777): updates from Krunal Chavda / YV Orbit
