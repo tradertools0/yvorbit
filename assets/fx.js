@@ -40,7 +40,7 @@
   var canvas = $(".hero-canvas"), anchor = $(".hero-mark");
   if (canvas && anchor && canvas.getContext) {
     var ctx = canvas.getContext("2d");
-    var POS = css("--pos-text", "#7FD8B0"), NEG = css("--neg", "#F08A76"), GOLD = css("--accent", "#7CC4FF"), COOL = css("--cool", "#9DB4D8");
+    var POS = "#EEF2F8", NEG = "#EEF2F8",  /* satellites off-white (v3); distance from the dashed ring shows win/loss */ GOLD = css("--accent", "#7CC4FF"), COOL = css("--cool", "#9DB4D8");
     var W, H, dpr, cx, cy, base, tilt = -0.2, squash = 0.36, mx = 0, my = 0, tmx = 0, tmy = 0;
     var stars = [];
     var sats = tests.map(function (r, i) {
