@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#07090E">
+<meta name="theme-color" content="#040A1C">
 <meta name="color-scheme" content="dark">
 <script>document.documentElement.className+=" js"</script>
 <title>About YV Orbit | MT5 EA Development and Trading Research</title>
@@ -23,7 +23,7 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Orbitron:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -31,13 +31,14 @@
 
 <header class="site-header">
   <div class="wrap nav">
-    <a class="logo" href="index.html" aria-label="YV Orbit home"><svg viewBox="32 22 600 156" aria-hidden="true"><path fill="currentColor" d="M32 24H69.3L100 75.2L130.7 24H168L100 137.3Z"/><path fill="currentColor" d="M84 126.7L100 153.3L116 126.7V176H84Z"/><g transform="translate(216 72.6) scale(1.368)"><path fill="currentColor" d="M0 0H9L19 16L29 0H38L23 24V40H15V24Z"/><path fill="currentColor" d="M50 0H59L67.5 26.2L76 0H85L72 40H63Z"/><g fill="none" stroke="currentColor" stroke-width="8" transform="translate(12 0)"><circle cx="124" cy="20" r="16"/><path d="M160 40V4H174A10 10 0 0 1 174 24H160M172 24L184 40"/><path d="M202 40V4H215A8 8 0 0 1 215 20H202M215 20H217A8 8 0 0 1 217 36H202"/><path d="M245 0V40"/><path d="M259 4H291M275 4V40"/></g></g></svg></a>
+    <a class="logo" href="index.html" aria-label="YV Orbit home"><svg class="logo-sym" viewBox="28 20 144 160" aria-hidden="true"><path d="M32 24H69.3L100 75.2L130.7 24H168L100 137.3Z"/><path d="M84 126.7L100 153.3L116 126.7V176H84Z"/></svg><span class="logo-word">ORBIT</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav"><svg class="i-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Menu</button>
     <nav class="navlinks" id="main-nav" aria-label="Main">
       <a href="index.html#results">Results</a>
       <a href="index.html#ea">EAs</a>
       <a href="index.html#library">Library</a>
       <a href="tools.html">Tools</a>
+      <a class="is-factory" href="factory.html">Tools Factory</a>
       <a href="index.html#method">Method</a>
       <a href="about.html">About</a>
       <a class="nav-cta" href="index.html#connect">Connect</a>
@@ -83,13 +84,13 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-row">
-      <a class="logo" href="index.html" aria-label="YV Orbit home"><svg viewBox="32 22 600 156" aria-hidden="true"><path fill="currentColor" d="M32 24H69.3L100 75.2L130.7 24H168L100 137.3Z"/><path fill="currentColor" d="M84 126.7L100 153.3L116 126.7V176H84Z"/><g transform="translate(216 72.6) scale(1.368)"><path fill="currentColor" d="M0 0H9L19 16L29 0H38L23 24V40H15V24Z"/><path fill="currentColor" d="M50 0H59L67.5 26.2L76 0H85L72 40H63Z"/><g fill="none" stroke="currentColor" stroke-width="8" transform="translate(12 0)"><circle cx="124" cy="20" r="16"/><path d="M160 40V4H174A10 10 0 0 1 174 24H160M172 24L184 40"/><path d="M202 40V4H215A8 8 0 0 1 215 20H202M215 20H217A8 8 0 0 1 217 36H202"/><path d="M245 0V40"/><path d="M259 4H291M275 4V40"/></g></g></svg></a>
+      <a class="logo" href="index.html" aria-label="YV Orbit home"><svg class="logo-sym" viewBox="28 20 144 160" aria-hidden="true"><path d="M32 24H69.3L100 75.2L130.7 24H168L100 137.3Z"/><path d="M84 126.7L100 153.3L116 126.7V176H84Z"/></svg><span class="logo-word">ORBIT</span></a>
       <span>© <span data-year>2026</span> YV Orbit. yvorbit.com</span>
     </div>
     <ul class="footer-links">
       <li><a href="about.html">About</a></li>
       <li><a href="index.html#results">Test record</a></li>
-      <li><a href="tools.html">Tools</a></li>
+      <li><a href="tools.html">Tools</a></li><li><a href="factory.html">Tools Factory</a></li>
       <li><a href="index.html#connect">Contact</a></li>
       <li><a href="risk.html">Risk disclosure</a></li>
       <li><a href="privacy.html">Privacy</a></li>
@@ -102,5 +103,6 @@
 <script src="assets/records.js"></script>
 <script src="assets/site.js"></script>
 <script src="assets/fx.js"></script>
+<script src="assets/orbit-bg.js"></script>
 </body>
 </html>

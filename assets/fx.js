@@ -35,12 +35,12 @@
 
   /* ---------- hero orbit ----------
      Each satellite is one published test. Its distance from the
-     core is its profit factor; the dashed gold ring is PF 1.00.
+     core is its profit factor; the dashed blue ring is PF 1.00.
      Inside the ring lost money, outside made money.            */
   var canvas = $(".hero-canvas"), anchor = $(".hero-mark");
   if (canvas && anchor && canvas.getContext) {
     var ctx = canvas.getContext("2d");
-    var POS = css("--pos-text", "#7FD8B0"), NEG = css("--neg", "#F08A76"), GOLD = css("--accent", "#E6C47F"), COOL = css("--cool", "#9DB4D8");
+    var POS = css("--pos-text", "#7FD8B0"), NEG = css("--neg", "#F08A76"), GOLD = css("--accent", "#7CC4FF"), COOL = css("--cool", "#9DB4D8");
     var W, H, dpr, cx, cy, base, tilt = -0.2, squash = 0.36, mx = 0, my = 0, tmx = 0, tmy = 0;
     var stars = [];
     var sats = tests.map(function (r, i) {
